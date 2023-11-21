@@ -12,6 +12,7 @@ const PremiereCard: FC<dataPrem> = ({ item }): JSX.Element => {
       <img className={styles.img} src={item?.posterUrl} alt={item.nameRu} />{" "}
       <span>Название: {item?.nameRu}</span>
       <span>{item?.nameEng}</span>
+      <span>{item?.premierRu}</span>
     </div>
   );
 };
