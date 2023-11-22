@@ -4,19 +4,28 @@ import { useState, useEffect } from "react";
 import "swiper/css";
 import styles from "./Premieres.module.css";
 import PremiereCard from "./movie-card/PremiereCard.tsx";
-
+import { createLocalStorage } from "../../../utils/localStorage.ts";
 import { PremierService } from "../../../services/premierService.ts";
 
 const Premeres = (): JSX.Element => {
-  const [premiers, setPremiers] = useState(Array<IPremier>);
-
+  const [premiersData, setPremiersData] = useState(Array<IPremier>);
+  const premieresLocalStorage = localStorage.getItem("premieres");
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await PremierService.getPremier();
-      setPremiers(response.data.items);
-    };
-    fetchData();
-  }, []);
+    if (
+      typeof premieresLocalStorage === "string" &&
+      JSON.parse(premieresLocalStorage).saveTime ==
+        new Date().toJSON().split("T")[0]
+    ) {
+      setPremiersData(JSON.parse(premieresLocalStorage).data);
+    } else {
+      const fetchData = async () => {
+        const response = await PremierService.getPremier();
+        setPremiersData(response.data.items);
+        createLocalStorage("premieres", response.data.items);
+      };
+      fetchData();
+    }
+  }, [premieresLocalStorage]);
 
   return (
     <div className={styles.container}>
@@ -28,8 +37,8 @@ const Premeres = (): JSX.Element => {
           loop={true}
           grab-cursor="true"
         >
-          {premiers.length > 0
-            ? premiers.map((item: IPremier) => (
+          {premiersData.length > 0
+            ? premiersData.map((item: IPremier) => (
                 <SwiperSlide key={item.kinopoiskId}>
                   <PremiereCard item={item} />
                 </SwiperSlide>
