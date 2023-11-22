@@ -5,6 +5,11 @@ export type genre = {
   [key: string]: string;
 };
 
+export interface localStorageType {
+  saveTime: string;
+  data: Array<IPremier> | Array<IDigitalRelease>;
+}
+
 export interface IPremier {
   kinopoiskId: number;
   nameRu: string;

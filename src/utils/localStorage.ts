@@ -1,14 +1,11 @@
 import { IDigitalRelease, IPremier } from "../types/movies";
-type aa = {
-  saveTime: string;
-  data: Array<IPremier> | Array<IDigitalRelease>;
-};
+import { localStorageType } from "../types/movies";
 
 export const createLocalStorage = (
   objectName: string,
   arr: Array<IPremier> | Array<IDigitalRelease>
 ): void => {
-  const object: aa = {
+  const object: localStorageType = {
     saveTime: new Date().toJSON().split("T")[0],
     data: arr,
   };
