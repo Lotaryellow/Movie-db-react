@@ -5,24 +5,15 @@ import "swiper/css";
 import styles from "./Premieres.module.css";
 import PremiereCard from "./movie-card/PremiereCard.tsx";
 
+import { PremierService } from "../../../services/premierService.ts";
+
 const Premeres = (): JSX.Element => {
   const [premiers, setPremiers] = useState(Array<IPremier>);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(
-        "https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=2022&month=JANUARY",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "X-API-KEY": "bdad076f-fc67-4b17-952b-ce0ba03aaff2",
-          },
-        }
-      );
-      const data = await response.json();
-
-      setPremiers(data.items);
+      const response = await PremierService.getPremier();
+      setPremiers(response.data.items);
     };
     fetchData();
   }, []);
