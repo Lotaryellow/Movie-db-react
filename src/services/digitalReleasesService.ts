@@ -3,15 +3,16 @@ import { MONTHS } from "../constants/months";
 const keyApi: string = import.meta.env.VITE_APP_APIKEY;
 const pathApi: string = import.meta.env.VITE_APP_APIPATH;
 
-export const PremierService = {
-  async getPremier() {
+export const DigitalReleasesService = {
+  async getReleases() {
     const date = new Date();
     const dateYearNow = date.getFullYear();
     const dateMonthNow: number = date.getUTCMonth();
-    const APIPremiereURL = `${pathApi}/v2.2/films/premieres?year=${dateYearNow}&month=${
+
+    const APIReleasesURL = `${pathApi}/v2.1/films/releases?year=${dateYearNow}&month=${
       MONTHS[`${dateMonthNow}`]
-    }`;
-    const data = await axios.get(APIPremiereURL, {
+    }&page=1`;
+    const data = await axios.get(APIReleasesURL, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

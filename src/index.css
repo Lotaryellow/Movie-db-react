@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
-:root{
-  --white:whitesmoke;
-  --gold:#FC0;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+:root {
+  --white: whitesmoke;
+  --gold: #fc0;
 
   --goldShadow: var(--gold) 1px 0 10px;
 
@@ -45,7 +45,10 @@ body {
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  font-family:'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
+  background: no-repeat url(/backgroundPremeres.jpg);
+  background-attachment: fixed;
+  background-size: cover;
 }
 input,
 button,
@@ -84,5 +87,11 @@ h6 {
   font-size: inherit;
   font-weight: 400;
 }
-
-
+.news {
+  display: block;
+  font-size: 40px;
+  color: var(--white);
+  text-shadow: var(--goldShadow);
+  text-align: center;
+  padding: 40px 0px 40px 0px;
+}
