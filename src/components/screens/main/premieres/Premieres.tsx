@@ -31,10 +31,10 @@ const Premeres = (): JSX.Element => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [cardsNumberWidth, setCardNumberWidth] = useState(Number());
   useEffect(() => {
-    const handle = (): void => {
+    const handleResize = (): void => {
       setWindowWidth(window.innerWidth);
     };
-    window.addEventListener("resize", handle);
+    window.addEventListener("resize", handleResize);
   }, []);
   useEffect(() => {
     if (windowWidth > 1400) {

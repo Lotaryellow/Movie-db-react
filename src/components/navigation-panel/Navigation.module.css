@@ -1,0 +1,50 @@
+.content {
+  z-index: 20;
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  top: 20px;
+  background-color: var(--violet);
+  border: 1px solid var(--gold);
+  box-shadow: var(--goldShadow);
+  border-radius: 1% 25% 1% 25%;
+}
+.logo {
+  display: flex;
+  margin: 0px 0px 0px 35px;
+  gap: 20px;
+}
+.navTitle {
+  font-style: italic;
+  padding: 8px 0px 0px 10px;
+  font-size: 2em;
+  color: var(--gold);
+}
+
+.navLogo {
+  width: 45px;
+}
+
+.rndFilms {
+  display: flex;
+  font-size: 1.2rem;
+  margin: 12px 0px 0px 30px;
+  color: var(--white);
+  transition-duration: 1s;
+}
+.rndFilms:hover {
+  color: var(--white);
+  text-shadow: var(--goldShadow);
+}
+.searchInputBlock {
+  display: flex;
+  gap: 10px;
+}
+.input {
+  padding: 0px 0px 0px 5px;
+  height: 1.8em;
+  margin: 0px 40px 0px 0px;
+  border-radius: 1% 45% 1% 1%;
+}

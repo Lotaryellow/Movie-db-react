@@ -5,6 +5,7 @@ import { createLocalStorage } from "../../../../utils/localStorage.ts";
 import { IDigitalRelease } from "../../../../types/movies";
 import DigitalReleasesCard from "./releases-card/DigitalReleasesCard.tsx";
 import styles from "./DigitalReleases.module.css";
+import "swiper/css";
 
 const DigitalReleases = (): JSX.Element => {
   const [digitalReleasesData, setDigitalReleasesData] = useState(

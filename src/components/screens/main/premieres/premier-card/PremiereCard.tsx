@@ -1,6 +1,7 @@
 import { FC } from "react";
 import styles from "../Premieres.module.css";
 import { IPremier } from "../../../../../types/movies";
+import { Link } from "react-router-dom";
 
 type dataPrem = {
   item: IPremier;
@@ -9,14 +10,16 @@ type dataPrem = {
 const PremiereCard: FC<dataPrem> = ({ item }): JSX.Element => {
   return (
     <>
-      <div className={styles.box1}>
+      <div className={styles.card}>
         <img
           className={styles.img}
           src={item?.posterUrlPreview}
           alt={item.nameRu}
         />
       </div>
-      <span className={styles.titleCard}>{item.nameRu}</span>
+      <Link to={`/info/${item.kinopoiskId}`} className={styles.titleCard}>
+        {item.nameRu}
+      </Link>
     </>
   );
 };

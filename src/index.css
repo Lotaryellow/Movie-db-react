@@ -2,10 +2,14 @@
 :root {
   --white: whitesmoke;
   --gold: #fc0;
+  --violet: #28094f;
 
   --goldShadow: var(--gold) 1px 0 10px;
+  --whiteShadow: var(--white) 2px 0 5px;
 
+  --fontNormal: 16px;
   --fontBig: 48px;
+  padding: 0px 20px 0px 20px;
 }
 
 * {
