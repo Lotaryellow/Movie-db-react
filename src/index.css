@@ -3,6 +3,7 @@
   --white: whitesmoke;
   --gold: #fc0;
   --violet: #28094f;
+  --black: #000000;
 
   --goldShadow: var(--gold) 1px 0 10px;
   --whiteShadow: var(--white) 2px 0 5px;

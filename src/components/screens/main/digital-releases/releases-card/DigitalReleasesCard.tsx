@@ -1,6 +1,7 @@
 import { IDigitalRelease } from "../../../../../types/movies";
 import styles from "../DigitalReleases.module.css";
 import { FC } from "react";
+import { Link } from "react-router-dom";
 
 type dataReleases = {
   item: IDigitalRelease;
@@ -16,7 +17,9 @@ const DigitalReleasesCard: FC<dataReleases> = ({ item }): JSX.Element => {
           alt={item.nameRu}
         />{" "}
       </div>
-      <span className={styles.titleCard}>{item.nameRu}</span>
+      <Link to={`/info/${item.filmId}`} className={styles.titleCard}>
+        {item.nameRu}
+      </Link>
     </>
   );
 };

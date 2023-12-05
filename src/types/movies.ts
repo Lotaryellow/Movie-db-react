@@ -91,3 +91,18 @@ export interface IMovie {
   shortFilm: boolean;
   completed: boolean;
 }
+export interface ISearchingMovie {
+  filmId: number;
+  nameRu: string;
+  nameEn: string | null;
+  type: string;
+  year: string;
+  description: string;
+  filmLength: string;
+  countries: Array<country>;
+  genres: Array<genre>;
+  rating: string;
+  ratingVoteCount: number;
+  posterUrl: string;
+  posterUrlPreview: string;
+}

@@ -48,3 +48,39 @@
   margin: 0px 40px 0px 0px;
   border-radius: 1% 45% 1% 1%;
 }
+.searchResult {
+  position: absolute;
+  max-height: 800px;
+  flex-direction: column;
+  border: 1px solid var(--black);
+  overflow-y: scroll;
+  overflow-x: visible;
+  top: 68px;
+  right: 0px;
+}
+.searchButton {
+  width: 268.5px;
+  background: var(--white);
+  cursor: pointer;
+  margin-right: unset;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px 0px 0px;
+}
+.searchItemName {
+  padding: 10px 0px 0px 0px;
+  width: 150px;
+  font-size: 1.1rem;
+  color: var(--black);
+}
+
+.searchImgContainer {
+  width: 90px;
+}
+.searchCard {
+  display: flex;
+}
+.searchImg {
+  width: 100%;
+  object-fit: cover;
+}
