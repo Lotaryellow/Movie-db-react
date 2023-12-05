@@ -1,0 +1,36 @@
+.randomCard {
+  display: flex;
+  margin: 80px 0px 0px 10px;
+  gap: 20px;
+  transition: all ease-in-out 1s;
+}
+.randomCard:hover {
+  transition: all ease-in-out 1s;
+  position: sticky;
+  box-shadow: var(--goldShadow);
+}
+.imgBlock {
+  width: 300px;
+  height: 450px;
+}
+.textBlock {
+  margin: 10px 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.img {
+  width: inherit;
+  height: inherit;
+  object-fit: fill;
+}
+.title {
+  display: block;
+  font-size: var(--fontNormal);
+  color: white;
+}
+.titleContent {
+  margin: 0px 0px 0px 10px;
+  font-size: var(--fontNormal);
+  color: var(--gold);
+}

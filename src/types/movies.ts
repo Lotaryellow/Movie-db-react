@@ -9,6 +9,10 @@ export interface localStorageType {
   saveTime: string;
   data: Array<IPremier> | Array<IDigitalRelease>;
 }
+export interface localStorageRandomType {
+  saveTime: string;
+  data: Array<IMovie>;
+}
 
 export interface IPremier {
   kinopoiskId: number;

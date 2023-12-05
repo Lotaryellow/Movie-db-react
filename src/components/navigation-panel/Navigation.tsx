@@ -9,7 +9,7 @@ const Navigation = (): JSX.Element => {
           Movie-DB
         </Link>
 
-        <Link to="/" className={styles.rndFilms}>
+        <Link to="/random" className={styles.rndFilms}>
           Случайные фильмы
         </Link>
       </div>

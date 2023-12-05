@@ -6,6 +6,7 @@ import Premieres from "./components/screens/main/premieres/Premieres";
 import DigitalReleases from "./components/screens/main/digital-releases/DigitalReleases";
 import FilmInfo from "./components/screens/info/FilmInfo";
 import "./index.css";
+import Random from "./components/screens/random/Random";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,6 +31,15 @@ const router = createBrowserRouter([
     errorElement: <div>Что-то пошло не так</div>,
   },
   { path: "*", element: <div>Такой страницы не существует</div> },
+  {
+    path: "/random",
+    element: (
+      <div>
+        <Navigation />
+        <Random />
+      </div>
+    ),
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
