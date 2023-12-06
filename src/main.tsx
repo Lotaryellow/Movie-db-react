@@ -23,7 +23,6 @@ const router = createBrowserRouter([
     path: "/info/:id?",
     element: (
       <>
-        {" "}
         <Navigation />
         <FilmInfo />
       </>

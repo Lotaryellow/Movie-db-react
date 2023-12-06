@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { RandomService } from "../../../services/RandomService";
+import { RandomService } from "../../../services/randomService";
 import { IMovie } from "../../../types/movies";
 import RandomCard from "./random-card/RandomCard";
 import { createLocalStorageRandom } from "../../../utils/localStorage";
 
 const Random = (): JSX.Element => {
-  const [randomData, setRandomData] = useState(Array<IMovie>);
+  const [randomData, setRandomData] = useState<Array<IMovie>>([]);
 
   const randomLocalStorage = localStorage.getItem("random");
   useEffect(() => {

@@ -8,9 +8,9 @@ import styles from "./DigitalReleases.module.css";
 import "swiper/css";
 
 const DigitalReleases = (): JSX.Element => {
-  const [digitalReleasesData, setDigitalReleasesData] = useState(
+  const [digitalReleasesData, setDigitalReleasesData] = useState<
     Array<IDigitalRelease>
-  );
+  >([]);
 
   const digitalReleasesLocalStorage = localStorage.getItem("releases");
   useEffect(() => {
@@ -31,7 +31,7 @@ const DigitalReleases = (): JSX.Element => {
   }, [digitalReleasesLocalStorage]);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [cardsNumberWidth, setCardNumberWidth] = useState(Number());
+  const [cardsNumberWidth, setCardNumberWidth] = useState<number>(0);
   useEffect(() => {
     const handle = (): void => {
       setWindowWidth(window.innerWidth);

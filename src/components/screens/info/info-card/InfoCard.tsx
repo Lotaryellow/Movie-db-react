@@ -25,7 +25,7 @@ const InfoCard: FC<dataInfo> = ({ item }): JSX.Element => {
         <span className={styles.title}>
           Рейтинги Кинопоиска и Imdb:
           <span className={styles.titleContent}>
-            {item?.ratingKinopoisk ? item?.ratingKinopoisk : "Нет данных"}{" "}
+            {item?.ratingKinopoisk ? item?.ratingKinopoisk : "Нет данных"}
             {" / "}
             {item?.ratingImdb ? item?.ratingImdb : "Нет данных"}
           </span>

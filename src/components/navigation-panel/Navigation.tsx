@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { SearchService } from "../../services/searchService";
 import { ISearchingMovie } from "../../types/movies";
 const Navigation = (): JSX.Element => {
-  const [searchName, setSearchName] = useState("");
-  const [searchResult, setSearchResult] = useState(Array<ISearchingMovie>);
+  const [searchName, setSearchName] = useState<string>("");
+  const [searchResult, setSearchResult] = useState<Array<ISearchingMovie>>([]);
   const fetchData = async () => {
     const response = await SearchService.getSearch(searchName);
     setSearchResult(response.data.films);
@@ -16,7 +16,6 @@ const Navigation = (): JSX.Element => {
         fetchData();
       }
     }, 1000);
-
     return () => window.clearTimeout(timeoutID);
   }, [searchName]);
 

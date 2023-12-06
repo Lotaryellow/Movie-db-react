@@ -32,7 +32,11 @@ const RandomCard: FC<dataRandom> = ({ itemData }): JSX.Element => {
             <span className={styles.title}>
               Рейтинги Кинопоиска и Imdb:
               <span className={styles.titleContent}>
-                {itemData?.ratingKinopoisk} {" / "} {itemData?.ratingImdb}
+                {itemData?.ratingKinopoisk
+                  ? itemData?.ratingKinopoisk
+                  : "Нет данных"}{" "}
+                {" / "}
+                {itemData?.ratingImdb ? itemData?.ratingImdb : "Нет данных"}
               </span>
             </span>
           ) : null}

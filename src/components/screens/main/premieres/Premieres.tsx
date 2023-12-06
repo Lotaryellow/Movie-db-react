@@ -8,7 +8,7 @@ import styles from "./Premieres.module.css";
 import "swiper/css";
 
 const Premeres = (): JSX.Element => {
-  const [premiersData, setPremiersData] = useState(Array<IPremier>);
+  const [premiersData, setPremiersData] = useState<Array<IPremier>>([]);
 
   const premieresLocalStorage = localStorage.getItem("premieres");
   useEffect(() => {
@@ -29,7 +29,7 @@ const Premeres = (): JSX.Element => {
   }, [premieresLocalStorage]);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [cardsNumberWidth, setCardNumberWidth] = useState(Number());
+  const [cardsNumberWidth, setCardNumberWidth] = useState<number>(0);
   useEffect(() => {
     const handleResize = (): void => {
       setWindowWidth(window.innerWidth);
