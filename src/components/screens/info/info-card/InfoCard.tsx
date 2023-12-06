@@ -1,6 +1,7 @@
 import { FC } from "react";
 import styles from "../FilmInfo.module.css";
 import { IMovie } from "../../../../types/movies";
+import { timeConverter } from "../../../../utils/timeConverter";
 
 type dataInfo = {
   item: IMovie;
@@ -17,14 +18,16 @@ const InfoCard: FC<dataInfo> = ({ item }): JSX.Element => {
       <span className={styles.title}>
         Название:
         <span className={styles.titleContent}>
-          {item?.nameRu} \ {item?.nameOriginal}
+          {item?.nameOriginal ? item.nameRu : item?.nameOriginal}
         </span>
       </span>
       {item?.ratingKinopoisk ? (
         <span className={styles.title}>
-          Рейтинги кинопоиска и Imdb:
+          Рейтинги Кинопоиска и Imdb:
           <span className={styles.titleContent}>
-            {item?.ratingKinopoisk} | {item?.ratingImdb}
+            {item?.ratingKinopoisk ? item?.ratingKinopoisk : "Нет данных"}{" "}
+            {" / "}
+            {item?.ratingImdb ? item?.ratingImdb : "Нет данных"}
           </span>
         </span>
       ) : null}
@@ -37,7 +40,9 @@ const InfoCard: FC<dataInfo> = ({ item }): JSX.Element => {
       {item?.filmLength ? (
         <span className={styles.title}>
           Хронометраж:
-          <span className={styles.titleContent}>{item?.filmLength}</span>
+          <span className={styles.titleContent}>
+            {timeConverter(item?.filmLength)}
+          </span>
         </span>
       ) : null}
       {item?.slogan ? (
@@ -55,21 +60,25 @@ const InfoCard: FC<dataInfo> = ({ item }): JSX.Element => {
       {item.genres ? (
         <span className={styles.title}>
           Жанр:
-          {item?.genres.map((item) => (
-            <span key={item.kinopoiskId} className={styles.titleContent}>
-              {item?.genre}
+          {item?.genres.map((genre, index) => (
+            <span key={index} className={styles.titleContent}>
+              {genre.genre}
+              {index < item?.genres?.length - 1 ? "," : ""}
             </span>
           ))}
+          {"."}
         </span>
       ) : null}
       {item.countries ? (
         <span className={styles.title}>
           Страны:
-          {item?.countries.map((item) => (
-            <span key={item.kinopoiskId} className={styles.titleContent}>
-              {item?.country}
+          {item?.countries.map((country, index) => (
+            <span key={index} className={styles.titleContent}>
+              {country?.country}
+              {index < item?.countries?.length - 1 ? "," : ""}
             </span>
           ))}
+          {"."}
         </span>
       ) : null}
     </div>

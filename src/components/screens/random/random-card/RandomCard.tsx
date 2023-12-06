@@ -23,14 +23,16 @@ const RandomCard: FC<dataRandom> = ({ itemData }): JSX.Element => {
           <span className={styles.title}>
             Название:
             <span className={styles.titleContent}>
-              {itemData?.nameRu} \ {itemData?.nameOriginal}
+              {itemData?.nameOriginal
+                ? itemData?.nameRu
+                : itemData?.nameOriginal}
             </span>
           </span>
           {itemData?.ratingKinopoisk ? (
             <span className={styles.title}>
-              Рейтинги кинопоиска и Imdb:
+              Рейтинги Кинопоиска и Imdb:
               <span className={styles.titleContent}>
-                {itemData?.ratingKinopoisk} | {itemData?.ratingImdb}
+                {itemData?.ratingKinopoisk} {" / "} {itemData?.ratingImdb}
               </span>
             </span>
           ) : null}
@@ -65,19 +67,22 @@ const RandomCard: FC<dataRandom> = ({ itemData }): JSX.Element => {
           {itemData.genres ? (
             <span className={styles.title}>
               Жанр:
-              {itemData?.genres.map((item) => (
-                <span key={item.kinopoiskId} className={styles.titleContent}>
+              {itemData?.genres.map((item, index) => (
+                <span key={index} className={styles.titleContent}>
                   {item?.genre}
+                  {index < itemData?.genres?.length - 1 ? "," : ""}
                 </span>
               ))}
+              {"."}
             </span>
           ) : null}
           {itemData.countries ? (
             <span className={styles.title}>
               Страны:
-              {itemData?.countries.map((item) => (
-                <span key={item.kinopoiskId} className={styles.titleContent}>
+              {itemData?.countries.map((item, index) => (
+                <span key={index} className={styles.titleContent}>
                   {item?.country}
+                  {index < itemData?.countries?.length - 1 ? "," : ""}
                 </span>
               ))}
             </span>
