@@ -3,14 +3,19 @@ import styles from "./Navigation.module.css";
 import { useState, useEffect } from "react";
 import { SearchService } from "../../services/searchService";
 import { ISearchingMovie } from "../../types/movies";
+import Spinner from "../spinner/mySpinner";
 const Navigation = (): JSX.Element => {
   const [searchName, setSearchName] = useState<string>("");
   const [searchResult, setSearchResult] = useState<Array<ISearchingMovie>>([]);
-  const fetchData = async () => {
-    const response = await SearchService.getSearch(searchName);
-    setSearchResult(response.data.films);
-  };
+  const [loaderSpinner, setLoaderSpinner] = useState<boolean>(false);
+
   useEffect(() => {
+    const fetchData = async () => {
+      setLoaderSpinner(true);
+      const response = await SearchService.getSearch(searchName);
+      setSearchResult(response.data.films);
+      setLoaderSpinner(false);
+    };
     const timeoutID = window.setTimeout(() => {
       if (searchName.length > 0) {
         fetchData();
@@ -32,6 +37,7 @@ const Navigation = (): JSX.Element => {
         </Link>
       </div>
       <div className={styles.searchInputBlock}>
+        <Spinner loading={loaderSpinner} />
         <input
           className={styles.input}
           type="text"
