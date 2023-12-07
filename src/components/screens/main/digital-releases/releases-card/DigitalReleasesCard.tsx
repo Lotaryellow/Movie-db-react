@@ -18,7 +18,7 @@ const DigitalReleasesCard: FC<dataReleases> = ({ item }): JSX.Element => {
         />{" "}
       </div>
       <Link to={`/info/${item.filmId}`} className={styles.titleCard}>
-        {item.nameRu}
+        {item.nameRu || item.nameEn}
       </Link>
     </>
   );

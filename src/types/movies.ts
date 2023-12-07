@@ -17,7 +17,7 @@ export interface localStorageRandomType {
 export interface IPremier {
   kinopoiskId: number;
   nameRu: string;
-  nameEng: string | null;
+  nameEn: string | null;
   year: number;
   posterUrl: string;
   posterUrlPreview: string;
@@ -29,7 +29,7 @@ export interface IPremier {
 export interface IDigitalRelease {
   filmId: number;
   nameRu: string;
-  nameEng: string | null;
+  nameEn: string | null;
   year: number;
   posterUrl: string;
   posterUrlPreview: string;
@@ -48,7 +48,7 @@ export interface IMovie {
   kinopoiskHDId: string | null;
   imdbId: string;
   nameRu: string | null;
-  nameEng: string | null;
+  nameEn: string | null;
   nameOriginal: string;
   posterUrl: string;
   posterUrlPreview: string;

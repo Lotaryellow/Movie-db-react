@@ -22,6 +22,7 @@ const Premeres = (): JSX.Element => {
       const fetchData = async () => {
         const response = await PremierService.getPremier();
         setPremiersData(response.data.items);
+
         createLocalStorage("premieres", response.data.items);
       };
       fetchData();

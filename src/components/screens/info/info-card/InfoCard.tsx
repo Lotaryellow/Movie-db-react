@@ -18,8 +18,11 @@ const InfoCard: FC<dataInfo> = ({ item }): JSX.Element => {
       <span className={styles.title}>
         Название:
         <span className={styles.titleContent}>
-          {item?.nameOriginal ? item.nameRu : item?.nameOriginal}
+          {item?.nameOriginal || item?.nameRu
+            ? item.nameRu
+            : item?.nameOriginal}
         </span>
+        {"."}
       </span>
       {item?.ratingKinopoisk ? (
         <span className={styles.title}>
@@ -29,6 +32,7 @@ const InfoCard: FC<dataInfo> = ({ item }): JSX.Element => {
             {" / "}
             {item?.ratingImdb ? item?.ratingImdb : "Нет данных"}
           </span>
+          {"."}
         </span>
       ) : null}
       {item?.year ? (
@@ -43,12 +47,14 @@ const InfoCard: FC<dataInfo> = ({ item }): JSX.Element => {
           <span className={styles.titleContent}>
             {timeConverter(item?.filmLength)}
           </span>
+          {"."}
         </span>
       ) : null}
       {item?.slogan ? (
         <span className={styles.title}>
           Слоган:
           <span className={styles.titleContent}>{item?.slogan}</span>
+          {"."}
         </span>
       ) : null}
       {item?.description ? (

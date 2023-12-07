@@ -18,7 +18,7 @@ const PremiereCard: FC<dataPrem> = ({ item }): JSX.Element => {
         />
       </div>
       <Link to={`/info/${item.kinopoiskId}`} className={styles.titleCard}>
-        {item.nameRu}
+        {item.nameRu || item.nameEn}
       </Link>
     </>
   );

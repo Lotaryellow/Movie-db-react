@@ -27,6 +27,7 @@ const RandomCard: FC<dataRandom> = ({ itemData }): JSX.Element => {
                 ? itemData?.nameRu
                 : itemData?.nameOriginal}
             </span>
+            {"."}
           </span>
           {itemData?.ratingKinopoisk ? (
             <span className={styles.title}>
@@ -34,16 +35,18 @@ const RandomCard: FC<dataRandom> = ({ itemData }): JSX.Element => {
               <span className={styles.titleContent}>
                 {itemData?.ratingKinopoisk
                   ? itemData?.ratingKinopoisk
-                  : "Нет данных"}{" "}
+                  : "Нет данных"}
                 {" / "}
                 {itemData?.ratingImdb ? itemData?.ratingImdb : "Нет данных"}
               </span>
+              {"."}
             </span>
           ) : null}
           {itemData?.year ? (
             <span className={styles.title}>
               Год выпуска:
-              <span className={styles.titleContent}>{itemData?.year} год.</span>
+              <span className={styles.titleContent}>{itemData?.year} год</span>
+              {"."}
             </span>
           ) : null}
           {itemData?.filmLength ? (
@@ -52,12 +55,14 @@ const RandomCard: FC<dataRandom> = ({ itemData }): JSX.Element => {
               <span className={styles.titleContent}>
                 {timeConverter(itemData?.filmLength)}
               </span>
+              {"."}
             </span>
           ) : null}
           {itemData?.slogan ? (
             <span className={styles.title}>
               Слоган:
               <span className={styles.titleContent}>{itemData?.slogan}</span>
+              {"."}
             </span>
           ) : null}
           {itemData?.description ? (
@@ -89,6 +94,7 @@ const RandomCard: FC<dataRandom> = ({ itemData }): JSX.Element => {
                   {index < itemData?.countries?.length - 1 ? "," : ""}
                 </span>
               ))}
+              {"."}
             </span>
           ) : null}
         </div>
