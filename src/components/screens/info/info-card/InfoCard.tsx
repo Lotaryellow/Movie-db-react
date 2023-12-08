@@ -18,9 +18,7 @@ const InfoCard: FC<dataInfo> = ({ item }): JSX.Element => {
       <span className={styles.title}>
         Название:
         <span className={styles.titleContent}>
-          {item?.nameOriginal || item?.nameRu
-            ? item.nameRu
-            : item?.nameOriginal}
+          {item?.nameRu || item?.nameOriginal}
         </span>
         {"."}
       </span>

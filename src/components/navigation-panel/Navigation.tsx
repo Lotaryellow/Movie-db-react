@@ -37,7 +37,10 @@ const Navigation = (): JSX.Element => {
         </Link>
       </div>
       <div className={styles.searchInputBlock}>
-        <Spinner loading={loaderSpinner} />
+        <div className={styles.spinner}>
+          <Spinner loading={loaderSpinner} />
+        </div>
+
         <input
           className={styles.input}
           type="text"
