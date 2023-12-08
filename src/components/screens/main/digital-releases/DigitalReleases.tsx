@@ -23,8 +23,8 @@ const DigitalReleases = (): JSX.Element => {
     } else {
       const fetchData = async () => {
         const response = await DigitalReleasesService.getReleases();
-        setDigitalReleasesData(response.data.releases);
-        createLocalStorage("releases", response.data.releases);
+        setDigitalReleasesData(response?.data?.releases);
+        createLocalStorage("releases", response.data?.releases);
       };
       fetchData();
     }

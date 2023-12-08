@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { IMovie } from "../../../types/movies";
 import InfoCard from "./info-card/InfoCard";
 import { useLocation } from "react-router-dom";
+import Navigation from "../../navigation-panel/Navigation";
 
 const FilmInfo = (): JSX.Element => {
   const [filmInfo, setFilmInfo] = useState<IMovie>(Object);
@@ -20,6 +21,7 @@ const FilmInfo = (): JSX.Element => {
 
   return (
     <>
+      <Navigation />
       <InfoCard item={filmInfo} />
     </>
   );
