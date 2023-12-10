@@ -34,3 +34,7 @@
   font-size: var(--fontNormal);
   color: var(--gold);
 }
+.error {
+  font-size: 20px;
+  color: var(--white);
+}

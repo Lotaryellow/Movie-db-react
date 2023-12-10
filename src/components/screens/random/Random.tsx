@@ -4,6 +4,7 @@ import { IMovie } from "../../../types/movies";
 import RandomCard from "./random-card/RandomCard";
 import { createLocalStorageRandom } from "../../../utils/localStorage";
 import Navigation from "../../navigation-panel/Navigation";
+import styles from "./Random.module.css";
 
 const Random = (): JSX.Element => {
   const [randomData, setRandomData] = useState<Array<IMovie>>([]);
@@ -29,9 +30,13 @@ const Random = (): JSX.Element => {
   return (
     <>
       <Navigation />
-      {randomData.map((item: IMovie) => (
-        <RandomCard key={item.kinopoiskId} itemData={item} />
-      ))}
+      {randomData.length > 0 ? (
+        randomData.map((item: IMovie) => (
+          <RandomCard key={item.kinopoiskId} itemData={item} />
+        ))
+      ) : (
+        <span className={styles.error}>Нет данных</span>
+      )}
     </>
   );
 };

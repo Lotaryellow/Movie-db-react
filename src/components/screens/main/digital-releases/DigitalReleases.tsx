@@ -69,13 +69,15 @@ const DigitalReleases = (): JSX.Element => {
           loop={true}
           grab-cursor="true"
         >
-          {digitalReleasesData.length > 0
-            ? digitalReleasesData.map((item: IDigitalRelease) => (
-                <SwiperSlide key={item.filmId}>
-                  <DigitalReleasesCard item={item} />
-                </SwiperSlide>
-              ))
-            : "нет данных"}
+          {digitalReleasesData.length > 0 ? (
+            digitalReleasesData.map((item: IDigitalRelease) => (
+              <SwiperSlide key={item.filmId}>
+                <DigitalReleasesCard item={item} />
+              </SwiperSlide>
+            ))
+          ) : (
+            <span className={styles.error}>Нет данных</span>
+          )}
         </Swiper>
       </div>
     </div>

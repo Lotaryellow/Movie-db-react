@@ -30,3 +30,7 @@
   text-align: center;
   color: var(--gold);
 }
+.error {
+  font-size: 20px;
+  color: var(--white);
+}

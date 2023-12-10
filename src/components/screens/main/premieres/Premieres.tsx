@@ -68,13 +68,15 @@ const Premeres = (): JSX.Element => {
           loop={true}
           grab-cursor="true"
         >
-          {premiersData.length > 0
-            ? premiersData.map((item: IPremier) => (
-                <SwiperSlide key={item.kinopoiskId}>
-                  <PremiereCard item={item} />
-                </SwiperSlide>
-              ))
-            : "нет данных"}
+          {premiersData.length > 0 ? (
+            premiersData.map((item: IPremier) => (
+              <SwiperSlide key={item.kinopoiskId}>
+                <PremiereCard item={item} />
+              </SwiperSlide>
+            ))
+          ) : (
+            <span className={styles.error}>Нет данных</span>
+          )}
         </Swiper>
       </div>
     </div>

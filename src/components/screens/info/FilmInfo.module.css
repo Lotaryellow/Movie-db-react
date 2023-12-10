@@ -21,3 +21,8 @@
   font-size: var(--fontNormal);
   color: var(--white);
 }
+@media (max-width: 500px) {
+  .swiper {
+    max-width: 270px;
+  }
+}
