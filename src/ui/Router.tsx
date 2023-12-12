@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Main from "../components/screens/main/Main";
-import Random from "../components/screens/random/Random";
-import FilmInfo from "../components/screens/info/FilmInfo";
+import Main from "../screens/main/Main";
+import Random from "../screens/random/Random";
+import FilmInfo from "../screens/info/FilmInfo";
 import styles from "./Router.module.css";
 const Router = () => {
   return (

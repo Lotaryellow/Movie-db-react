@@ -1,9 +1,9 @@
-import { FilmInfoService } from "../../../services/filmInfoService";
+import { FilmInfoService } from "../../services/filmInfoService";
 import { useEffect, useState } from "react";
-import { IMovie } from "../../../types/movies";
+import { IMovie } from "../../types/movies";
 import InfoCard from "./info-card/InfoCard";
 import { useLocation } from "react-router-dom";
-import Navigation from "../../navigation-panel/Navigation";
+import Navigation from "../../components/navigation-panel/Navigation";
 
 const FilmInfo = (): JSX.Element => {
   const [filmInfo, setFilmInfo] = useState<IMovie>(Object);

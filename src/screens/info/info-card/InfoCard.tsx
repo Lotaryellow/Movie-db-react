@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styles from "../FilmInfo.module.css";
-import { IMovie } from "../../../../types/movies";
-import { timeConverter } from "../../../../utils/timeConverter";
+import { IMovie } from "../../../types/movies";
+import { timeConverter } from "../../../utils/timeConverter";
 
 type dataInfo = {
   item: IMovie;
@@ -20,7 +20,6 @@ const InfoCard: FC<dataInfo> = ({ item }): JSX.Element => {
         <span className={styles.titleContent}>
           {item?.nameRu || item?.nameOriginal}
         </span>
-        {"."}
       </span>
       {item?.ratingKinopoisk ? (
         <span className={styles.title}>
@@ -30,7 +29,6 @@ const InfoCard: FC<dataInfo> = ({ item }): JSX.Element => {
             {" / "}
             {item?.ratingImdb ? item?.ratingImdb : "Нет данных"}
           </span>
-          {"."}
         </span>
       ) : null}
       {item?.year ? (
@@ -45,14 +43,12 @@ const InfoCard: FC<dataInfo> = ({ item }): JSX.Element => {
           <span className={styles.titleContent}>
             {timeConverter(item?.filmLength)}
           </span>
-          {"."}
         </span>
       ) : null}
       {item?.slogan ? (
         <span className={styles.title}>
           Слоган:
           <span className={styles.titleContent}>{item?.slogan}</span>
-          {"."}
         </span>
       ) : null}
       {item?.description ? (
@@ -70,7 +66,6 @@ const InfoCard: FC<dataInfo> = ({ item }): JSX.Element => {
               {index < item?.genres?.length - 1 ? "," : ""}
             </span>
           ))}
-          {"."}
         </span>
       ) : null}
       {item.countries ? (
@@ -82,7 +77,6 @@ const InfoCard: FC<dataInfo> = ({ item }): JSX.Element => {
               {index < item?.countries?.length - 1 ? "," : ""}
             </span>
           ))}
-          {"."}
         </span>
       ) : null}
     </div>

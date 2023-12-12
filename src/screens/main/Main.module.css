@@ -1,0 +1,5 @@
+.newsTitle {
+  margin: 20px 0px 0px 0px;
+  font-size: var(--fontLarge);
+  color: var(--gold);
+}

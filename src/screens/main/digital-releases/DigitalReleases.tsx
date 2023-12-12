@@ -1,8 +1,8 @@
-import { DigitalReleasesService } from "../../../../services/digitalReleasesService";
+import { DigitalReleasesService } from "../../../services/digitalReleasesService.ts";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useState, useEffect } from "react";
-import { createLocalStorage } from "../../../../utils/localStorage.ts";
-import { IDigitalRelease } from "../../../../types/movies";
+import { createLocalStorage } from "../../../utils/localStorage.ts";
+import { IDigitalRelease } from "../../../types/movies.ts";
 import DigitalReleasesCard from "./releases-card/DigitalReleasesCard.tsx";
 import styles from "./DigitalReleases.module.css";
 import "swiper/css";

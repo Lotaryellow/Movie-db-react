@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styles from "../Premieres.module.css";
-import { IPremier } from "../../../../../types/movies";
+import { IPremier } from "../../../../types/movies";
 import { Link } from "react-router-dom";
 
 type dataPrem = {

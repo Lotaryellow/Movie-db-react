@@ -17,6 +17,7 @@
   margin: 10px 0px 0px 0px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 10px;
 }
 .img {
@@ -25,6 +26,7 @@
   object-fit: fill;
 }
 .title {
+  text-align: start;
   display: block;
   font-size: var(--fontNormal);
   color: white;
@@ -37,4 +39,24 @@
 .error {
   font-size: 20px;
   color: var(--white);
+}
+@media (max-width: 800px) {
+  .randomCard {
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0px 0px 0px;
+  }
+}
+@media (max-width: 500px) {
+  .title {
+    display: grid;
+  }
+  .textBlock {
+    width: 250px;
+    align-items: flex-start;
+    text-align: start;
+  }
+  .imgBlock {
+    width: 250px;
+  }
 }

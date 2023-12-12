@@ -8,7 +8,9 @@
   --goldShadow: var(--gold) 1px 0 10px;
   --whiteShadow: var(--white) 2px 0 5px;
 
+  --fontSmall: 12px;
   --fontNormal: 16px;
+  --fontLarge: 26px;
   --fontBig: 48px;
   padding: 0px 20px 0px 20px;
 }

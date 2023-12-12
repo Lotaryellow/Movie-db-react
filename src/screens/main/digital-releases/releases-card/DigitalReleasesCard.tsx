@@ -1,4 +1,4 @@
-import { IDigitalRelease } from "../../../../../types/movies";
+import { IDigitalRelease } from "../../../../types/movies";
 import styles from "../DigitalReleases.module.css";
 import { FC } from "react";
 import { Link } from "react-router-dom";

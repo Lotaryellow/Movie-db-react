@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Navigation.module.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, SetStateAction } from "react";
 import { SearchService } from "../../services/searchService";
 import { ISearchingMovie } from "../../types/movies";
 import Spinner from "../spinner/mySpinner";
@@ -8,7 +8,19 @@ const Navigation = (): JSX.Element => {
   const [searchName, setSearchName] = useState<string>("");
   const [searchResult, setSearchResult] = useState<Array<ISearchingMovie>>([]);
   const [loaderSpinner, setLoaderSpinner] = useState<boolean>(false);
+  const [searchOn, setSearchOn] = useState<boolean>(false);
 
+  const inputSearch = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setSearchName(event.target.value);
+    setSearchOn(true);
+  };
+  useEffect(() => {
+    window.addEventListener("click", () => {
+      setSearchOn(false);
+    });
+  }, []);
   useEffect(() => {
     const fetchData = async () => {
       setLoaderSpinner(true);
@@ -27,7 +39,9 @@ const Navigation = (): JSX.Element => {
   return (
     <div className={styles.content}>
       <div className={styles.logo}>
-        <img className={styles.navLogo} src="./logo.svg" alt="logo" />
+        <Link to="/">
+          <img className={styles.navLogo} src="./logo.svg" alt="logo" />
+        </Link>
         <Link to="/" className={styles.navTitle}>
           Movie-DB
         </Link>
@@ -45,10 +59,10 @@ const Navigation = (): JSX.Element => {
           className={styles.input}
           type="text"
           placeholder="Поиск"
-          onChange={(event) => setSearchName(event.target.value)}
+          onChange={inputSearch}
           pattern="^[^\s]+(\s.*)?$"
         />
-        {searchName.length > 1 ? (
+        {searchOn == true ? (
           <div className={styles.searchResult}>
             {searchResult.map((item: ISearchingMovie) => (
               <button key={item.filmId} className={styles.searchButton}>

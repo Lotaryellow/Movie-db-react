@@ -84,3 +84,32 @@
   width: 100%;
   object-fit: cover;
 }
+@media (max-width: 600px) {
+  .logo {
+    display: flex;
+    margin: 0px 0px 0px 5px;
+    gap: 5px;
+  }
+  .navTitle {
+    display: none;
+  }
+  .rndFilms {
+    align-items: center;
+    font-size: var(--fontSmall);
+    margin: 0px 0px 0px 20px;
+    transition-duration: 0s;
+  }
+  .input {
+    padding: 0px 0px 0px 5px;
+    height: 1.8em;
+    width: 80px;
+    margin: 0px 30px 0px 10px;
+    border-radius: 1% 45% 1% 1%;
+  }
+  .searchInputBlock {
+    gap: 0;
+  }
+  .searchResult {
+    width: 250px;
+  }
+}

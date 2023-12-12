@@ -1,7 +1,7 @@
 import styles from "../Random.module.css";
 import { FC } from "react";
-import { IMovie } from "../../../../types/movies";
-import { timeConverter } from "../../../../utils/timeConverter";
+import { IMovie } from "../../../types/movies";
+import { timeConverter } from "../../../utils/timeConverter";
 
 type dataRandom = {
   itemData: IMovie;
@@ -27,7 +27,6 @@ const RandomCard: FC<dataRandom> = ({ itemData }): JSX.Element => {
                 ? itemData?.nameRu
                 : itemData?.nameOriginal}
             </span>
-            {"."}
           </span>
           {itemData?.ratingKinopoisk ? (
             <span className={styles.title}>
@@ -39,14 +38,12 @@ const RandomCard: FC<dataRandom> = ({ itemData }): JSX.Element => {
                 {" / "}
                 {itemData?.ratingImdb ? itemData?.ratingImdb : "Нет данных"}
               </span>
-              {"."}
             </span>
           ) : null}
           {itemData?.year ? (
             <span className={styles.title}>
               Год выпуска:
               <span className={styles.titleContent}>{itemData?.year} год</span>
-              {"."}
             </span>
           ) : null}
           {itemData?.filmLength ? (
@@ -55,14 +52,12 @@ const RandomCard: FC<dataRandom> = ({ itemData }): JSX.Element => {
               <span className={styles.titleContent}>
                 {timeConverter(itemData?.filmLength)}
               </span>
-              {"."}
             </span>
           ) : null}
           {itemData?.slogan ? (
             <span className={styles.title}>
               Слоган:
               <span className={styles.titleContent}>{itemData?.slogan}</span>
-              {"."}
             </span>
           ) : null}
           {itemData?.description ? (
@@ -82,7 +77,6 @@ const RandomCard: FC<dataRandom> = ({ itemData }): JSX.Element => {
                   {index < itemData?.genres?.length - 1 ? "," : ""}
                 </span>
               ))}
-              {"."}
             </span>
           ) : null}
           {itemData.countries ? (
@@ -94,7 +88,6 @@ const RandomCard: FC<dataRandom> = ({ itemData }): JSX.Element => {
                   {index < itemData?.countries?.length - 1 ? "," : ""}
                 </span>
               ))}
-              {"."}
             </span>
           ) : null}
         </div>
