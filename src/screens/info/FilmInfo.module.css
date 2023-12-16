@@ -1,8 +1,14 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 100px 0px 0px 30px;
+}
 .infoCard {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 100px 0px 0px 30px;
+  text-align: start;
   gap: 15px;
 }
 .img {
@@ -21,13 +27,20 @@
   font-size: var(--fontNormal);
   color: var(--white);
 }
+.actorBlock {
+  margin: 20px 30px 0px 30px;
+}
+.btnActor {
+  background-color: var(--gold);
+  width: 300px;
+}
+
 @media (max-width: 500px) {
-  .infoCard {
-    display: flex;
+  .content {
     flex-direction: column;
-    align-items: flex-start;
-    margin: 50px 0px 0px 0px;
-    gap: 15px;
+    margin: 50px 0px 0px 30px;
+  }
+  .infoCard {
     max-width: 250px;
     text-align: start;
   }

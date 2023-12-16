@@ -106,3 +106,51 @@ export interface ISearchingMovie {
   posterUrl: string;
   posterUrlPreview: string;
 }
+
+export interface ICast {
+  staffId: number;
+  nameRu: string;
+  nameEn: string;
+  description: string | null;
+  posterUrl: string;
+  professionText: string;
+  professionKey: string;
+}
+export interface iActor {
+  personId: number;
+  webUrl: string;
+  nameRu: string | null;
+  nameEn: string;
+  sex: string;
+  posterUrl: string;
+  growth: number;
+  birthday: string | null;
+  death: string | null;
+  age: number;
+  birthplace: string | null;
+  deathplace: string | null;
+  spouses: [
+    {
+      personId: number;
+      name: string;
+      divorced: boolean;
+      divorcedReason: string;
+      sex: string;
+      children: number | null;
+      webUrl: string;
+      relation: string;
+    } | null
+  ];
+  hasAwards: number;
+  profession: string;
+  facts: string[];
+  films: {
+    filmId: number;
+    nameRu: string | null;
+    nameEn: string;
+    rating: string | null;
+    general: boolean;
+    description: string;
+    professionKey: string;
+  }[];
+}
