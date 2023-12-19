@@ -73,7 +73,6 @@
   font-size: 1.1rem;
   color: var(--black);
 }
-
 .searchImgContainer {
   width: 90px;
 }
@@ -83,6 +82,28 @@
 .searchImg {
   width: 100%;
   object-fit: cover;
+}
+.selectLinks {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  background-color: var(--gold);
+  border-radius: 1% 15% 1% 15%;
+  padding: 10px 0px 0px 0px;
+  font-size: 20px;
+}
+.linksBlock {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  background-color: var(--gold);
+  margin: 50px 0px 0px 0px;
+  width: 300px;
+  border-top: 1px solid black;
+}
+.topLink {
+  border-bottom: 1px solid red;
+  color: var(--black);
 }
 @media (max-width: 600px) {
   .logo {

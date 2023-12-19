@@ -154,3 +154,19 @@ export interface iActor {
     professionKey: string;
   }[];
 }
+
+export interface ITop {
+  kinopoiskId: number;
+  imdbId: string;
+  nameRu: string;
+  nameEn: string | null;
+  nameOriginal: string;
+  countries: Array<country>;
+  genres: Array<genre>;
+  ratingKinopoisk: number | null;
+  ratingImdb: number | null;
+  year: number;
+  type: string;
+  posterUrl: string;
+  posterUrlPreview: string;
+}

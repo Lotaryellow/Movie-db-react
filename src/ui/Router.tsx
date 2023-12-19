@@ -4,6 +4,7 @@ import Random from "../screens/random/Random";
 import FilmInfo from "../screens/info/FilmInfo";
 import styles from "./Router.module.css";
 import ActorCard from "../screens/info/actors/actor-list/actor-card/ActorCard";
+import TopPage from "../screens/top/TopPage";
 
 const Router = () => {
   return (
@@ -13,6 +14,7 @@ const Router = () => {
         <Route element={<Random />} path="/random" />
         <Route element={<FilmInfo />} path="/info/:id?" />
         <Route element={<ActorCard />} path="/actor/:id?" />
+        <Route element={<TopPage />} path="/top/:name?" />
         <Route
           path="*"
           element={<div className={styles.error}>ОШИБОЧКА</div>}

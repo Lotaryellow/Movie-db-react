@@ -9,6 +9,7 @@ const Navigation = (): JSX.Element => {
   const [searchResult, setSearchResult] = useState<Array<ISearchingMovie>>([]);
   const [loaderSpinner, setLoaderSpinner] = useState<boolean>(false);
   const [searchOn, setSearchOn] = useState<boolean>(false);
+  const [selectIsOpen, setSelectIsOpen] = useState<boolean>(false);
 
   const inputSearch = (event: {
     target: { value: SetStateAction<string> };
@@ -36,6 +37,10 @@ const Navigation = (): JSX.Element => {
     return () => window.clearTimeout(timeoutID);
   }, [searchName]);
 
+  const handleClick = () => {
+    setSelectIsOpen(!selectIsOpen);
+  };
+
   return (
     <div className={styles.content}>
       <div className={styles.logo}>
@@ -49,6 +54,41 @@ const Navigation = (): JSX.Element => {
         <Link to="/random" className={styles.rndFilms}>
           Случайные фильмы
         </Link>
+
+        <div onClick={handleClick} className={styles.selectLinks}>
+          Подборки и Топы
+          {selectIsOpen == true ? (
+            <div className={styles.linksBlock}>
+              <Link className={styles.topLink} to={`/top/${"TOP_250_MOVIES"}`}>
+                Топ 250
+              </Link>
+              <Link
+                className={styles.topLink}
+                to={`/top/${"TOP_250_TV_SHOWS"}`}
+              >
+                Топ 250 Сериалов
+              </Link>
+              <Link className={styles.topLink} to={`/top/${"TOP_POPULAR_ALL"}`}>
+                Популярное сейчас
+              </Link>
+              <Link className={styles.topLink} to={`/top/${"ZOMBIE_THEME"}`}>
+                Топ Зомби Тематика
+              </Link>
+              <Link className={styles.topLink} to={`/top/${"VAMPIRE_THEME"}`}>
+                Топ Вампирская Тематика
+              </Link>
+              <Link className={styles.topLink} to={`/top/${"LOVE_THEME"}`}>
+                Топ Романтическая Тематика
+              </Link>
+              <Link
+                className={styles.topLink}
+                to={`/top/${"CATASTROPHE_THEME"}`}
+              >
+                Топ Катастрофы Тематика
+              </Link>
+            </div>
+          ) : null}
+        </div>
       </div>
       <div className={styles.searchInputBlock}>
         <div className={styles.spinner}>
