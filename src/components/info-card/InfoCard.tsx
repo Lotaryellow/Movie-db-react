@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
-import styles from "../FilmInfo.module.css";
-import { IMovie } from "../../../types/movies";
-import { timeConverter } from "../../../utils/timeConverter";
-import Cast from "../actors/Cast";
+import styles from "../../screens/info/FilmInfo.module.css";
+import { IMovie } from "../../types/movies";
+import { timeConverter } from "../../utils/timeConverter";
+import Cast from "../cast/Cast";
 
 type dataInfo = {
   item: IMovie;

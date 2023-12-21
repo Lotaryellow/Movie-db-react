@@ -1,7 +1,7 @@
 import { FilmInfoService } from "../../services/filmInfoService";
 import { useEffect, useState } from "react";
 import { IMovie } from "../../types/movies";
-import InfoCard from "./info-card/InfoCard";
+import InfoCard from "../../components/info-card/InfoCard";
 import { useLocation } from "react-router-dom";
 import Navigation from "../../components/navigation-panel/Navigation";
 

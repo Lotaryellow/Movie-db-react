@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { TopService } from "../../services/topService";
 import { ITop } from "../../types/movies";
-import TopCard from "./top-card/TopCard";
+import TopCard from "../../components/top-card/TopCard";
 import Navigation from "../../components/navigation-panel/Navigation";
 
 const TopPage = (): JSX.Element => {

@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { createLocalStorage } from "../../../utils/localStorage.ts";
 import { PremierService } from "../../../services/premierService.ts";
 import { IPremier } from "../../../types/movies.ts";
-import PremiereCard from "./premier-card/PremiereCard.tsx";
+import PremiereCard from "../../../components/premier-card/PremiereCard.tsx";
 import styles from "./Premieres.module.css";
 import "swiper/css";
 

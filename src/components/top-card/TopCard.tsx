@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { ITop } from "../../../types/movies";
-import styles from "../Top.module.css";
+import { ITop } from "../../types/movies";
+import styles from "../../screens/top/Top.module.css";
 import { Link } from "react-router-dom";
 
 type dataTop = {

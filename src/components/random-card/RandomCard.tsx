@@ -1,7 +1,7 @@
-import styles from "../Random.module.css";
+import styles from "../../screens/random/Random.module.css";
 import { FC } from "react";
-import { IMovie } from "../../../types/movies";
-import { timeConverter } from "../../../utils/timeConverter";
+import { IMovie } from "../../types/movies";
+import { timeConverter } from "../../utils/timeConverter";
 
 type dataRandom = {
   itemData: IMovie;

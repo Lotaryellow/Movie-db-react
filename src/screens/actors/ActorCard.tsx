@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ActorService } from "../../../../../services/actorService";
-import { iActor } from "../../../../../types/movies";
+import { ActorService } from "../../services/actorService";
+import { iActor } from "../../types/movies";
 import styles from "./ActorCard.module.css";
-import Navigation from "../../../../../components/navigation-panel/Navigation";
+import Navigation from "../../components/navigation-panel/Navigation";
 
 const ActorCard = () => {
   const [actorData, setActorData] = useState<iActor>(Object);

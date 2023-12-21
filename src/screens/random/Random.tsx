@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { RandomService } from "../../services/randomService";
 import { IMovie } from "../../types/movies";
-import RandomCard from "./random-card/RandomCard";
+import RandomCard from "../../components/random-card/RandomCard";
 import { createLocalStorageRandom } from "../../utils/localStorage";
 import Navigation from "../../components/navigation-panel/Navigation";
 import styles from "./Random.module.css";

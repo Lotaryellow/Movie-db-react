@@ -3,7 +3,7 @@ import Main from "../screens/main/Main";
 import Random from "../screens/random/Random";
 import FilmInfo from "../screens/info/FilmInfo";
 import styles from "./Router.module.css";
-import ActorCard from "../screens/info/actors/actor-list/actor-card/ActorCard";
+import ActorCard from "../screens/actors/ActorCard";
 import TopPage from "../screens/top/TopPage";
 
 const Router = () => {
