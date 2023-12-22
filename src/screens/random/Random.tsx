@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { RandomService } from "../../services/randomService";
-import { IMovie } from "../../types/movies";
-import RandomCard from "../../components/random-card/RandomCard";
-import { createLocalStorageRandom } from "../../utils/localStorage";
 import Navigation from "../../components/navigation-panel/Navigation";
-import styles from "./Random.module.css";
+import { createLocalStorageRandom } from "../../utils/localStorage";
+import RandomCard from "../../components/block-list/BlockListCard";
+import { RandomService } from "../../services/randomService";
+import responseServer from "../../utils/responseServer";
+import { useEffect, useState } from "react";
+import { IMovie } from "../../types/movies";
 
 const Random = (): JSX.Element => {
   const [randomData, setRandomData] = useState<Array<IMovie>>([]);
@@ -32,10 +32,10 @@ const Random = (): JSX.Element => {
       <Navigation />
       {randomData.length > 0 ? (
         randomData.map((item: IMovie) => (
-          <RandomCard key={item.kinopoiskId} itemData={item} />
+          <RandomCard key={item.kinopoiskId} item={responseServer(item)} />
         ))
       ) : (
-        <span className={styles.error}>Нет данных</span>
+        <span className="randomStyles">Нет данных</span>
       )}
     </>
   );

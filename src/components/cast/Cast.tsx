@@ -1,9 +1,9 @@
+import { CastService } from "../../services/castService";
+import { Link, useLocation } from "react-router-dom";
+import CastCard from "./actor-list/CastCard";
 import { useState, useEffect } from "react";
 import { ICast } from "../../types/movies";
-import { Link, useLocation } from "react-router-dom";
 import styles from "./Cast.module.css";
-import CastCard from "./actor-list/CastCard";
-import { CastService } from "../../services/castService";
 
 const Cast = (): JSX.Element => {
   const [actorsData, setActorsData] = useState<Array<ICast>>([]);

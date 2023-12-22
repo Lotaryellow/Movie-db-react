@@ -170,3 +170,24 @@ export interface ITop {
   posterUrl: string;
   posterUrlPreview: string;
 }
+
+export interface IData {
+  id: number;
+  titleRu: string;
+  titleEn: string | null;
+  titleOriginal: string | null;
+  poster: {
+    preview: string;
+    full: string;
+  };
+  ratings: {
+    kinopoisk: number | null;
+    imdb: number | null;
+  };
+  year: number;
+  filmLength: number;
+  slogan: string | null;
+  description: string | null;
+  countries: Array<country>;
+  genres: Array<genre>;
+}

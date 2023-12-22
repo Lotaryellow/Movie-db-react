@@ -6,7 +6,6 @@
   text-shadow: var(--goldShadow);
   padding: 50px 0px 40px 0px;
 }
-
 .card {
   height: 400px;
   display: flex;
@@ -15,13 +14,13 @@
 .img {
   height: inherit;
   object-fit: fill;
-  border-radius: 20% 5% 5% 5%;
-  border: 1px solid var(--white);
-  box-shadow: var(--goldShadow);
-}
-.img:hover {
+  border-radius: 5% 20% 5% 5%;
   border: 1px solid var(--gold);
   box-shadow: var(--whiteShadow);
+}
+.img:hover {
+  border: 1px solid var(--white);
+  box-shadow: var(--goldShadow);
 }
 .titleCard {
   font-size: var(--fontNormal);

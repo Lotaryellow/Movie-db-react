@@ -1,11 +1,12 @@
+import SliderCards from "../../../components/slider/SliderCards.tsx";
+import { createLocalStorage } from "../../../utils/localStorage.ts";
+import { IDigitalRelease } from "../../../types/movies.ts";
 import { DigitalReleasesService } from "../../../services/digitalReleasesService.ts";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useState, useEffect } from "react";
-import { createLocalStorage } from "../../../utils/localStorage.ts";
-import { IDigitalRelease } from "../../../types/movies.ts";
-import DigitalReleasesCard from "../../../components/releases-card/DigitalReleasesCard.tsx";
-import styles from "./DigitalReleases.module.css";
+
 import "swiper/css";
+import responseServer from "../../../utils/responseServer.ts";
 
 const DigitalReleases = (): JSX.Element => {
   const [digitalReleasesData, setDigitalReleasesData] = useState<
@@ -61,8 +62,8 @@ const DigitalReleases = (): JSX.Element => {
 
   return (
     <div>
-      <h2 className={styles.title}>Цифровые релизы этого месяца</h2>
-      <div className={styles.swiper}>
+      <h2 className="titleStyles">Цифровые релизы этого месяца</h2>
+      <div>
         <Swiper
           spaceBetween={30}
           slidesPerView={cardsNumberWidth}
@@ -72,11 +73,11 @@ const DigitalReleases = (): JSX.Element => {
           {digitalReleasesData.length > 0 ? (
             digitalReleasesData.map((item: IDigitalRelease) => (
               <SwiperSlide key={item.filmId}>
-                <DigitalReleasesCard item={item} />
+                <SliderCards item={responseServer(item)} />
               </SwiperSlide>
             ))
           ) : (
-            <span className={styles.error}>Нет данных</span>
+            <span className="errorStyles">Нет данных</span>
           )}
         </Swiper>
       </div>

@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { createLocalStorage } from "../../../utils/localStorage.ts";
+import SliderCards from "../../../components/slider/SliderCards.tsx";
 import { PremierService } from "../../../services/premierService.ts";
+import { createLocalStorage } from "../../../utils/localStorage.ts";
+import responseServer from "../../../utils/responseServer.ts";
 import { IPremier } from "../../../types/movies.ts";
-import PremiereCard from "../../../components/premier-card/PremiereCard.tsx";
-import styles from "./Premieres.module.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useState, useEffect } from "react";
 import "swiper/css";
 
 const Premeres = (): JSX.Element => {
@@ -59,9 +59,9 @@ const Premeres = (): JSX.Element => {
   }, [windowWidth]);
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Премьеры этого месяца</h2>
-      <div className={styles.swiper}>
+    <div>
+      <h2 className="titleStyles">Премьеры этого месяца</h2>
+      <div>
         <Swiper
           spaceBetween={30}
           slidesPerView={cardsNumberWidth}
@@ -71,11 +71,11 @@ const Premeres = (): JSX.Element => {
           {premiersData.length > 0 ? (
             premiersData.map((item: IPremier) => (
               <SwiperSlide key={item.kinopoiskId}>
-                <PremiereCard item={item} />
+                <SliderCards item={responseServer(item)} />
               </SwiperSlide>
             ))
           ) : (
-            <span className={styles.error}>Нет данных</span>
+            <span className="errorStyles">Нет данных</span>
           )}
         </Swiper>
       </div>

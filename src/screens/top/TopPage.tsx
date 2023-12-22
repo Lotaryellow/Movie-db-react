@@ -1,9 +1,10 @@
+import Navigation from "../../components/navigation-panel/Navigation";
+import BlockListCard from "../../components/block-list/BlockListCard";
+import responseServer from "../../utils/responseServer";
+import { TopService } from "../../services/topService";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { TopService } from "../../services/topService";
 import { ITop } from "../../types/movies";
-import TopCard from "../../components/top-card/TopCard";
-import Navigation from "../../components/navigation-panel/Navigation";
 
 const TopPage = (): JSX.Element => {
   const [topInfo, setTopInfo] = useState<Array<ITop>>([]);
@@ -23,9 +24,7 @@ const TopPage = (): JSX.Element => {
     <>
       <Navigation />
       {topInfo.map((film: ITop) => (
-        <>
-          <TopCard key={film.kinopoiskId} item={film} />;
-        </>
+        <BlockListCard key={film.kinopoiskId} item={responseServer(film)} />
       ))}
     </>
   );

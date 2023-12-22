@@ -1,6 +1,6 @@
-import { FC } from "react";
 import { ICast } from "../../../types/movies";
 import styles from "../Cast.module.css";
+import { FC } from "react";
 
 type dataActor = {
   actor: ICast;

@@ -1,8 +1,8 @@
-import Navigation from "../../components/navigation-panel/Navigation";
-import { ActorService } from "../../services/actorService";
+import Navigation from "../../../components/navigation-panel/Navigation";
+import { ActorService } from "../../../services/actorService";
 import { Link, useLocation } from "react-router-dom";
+import { iActor } from "../../../types/movies";
 import { useEffect, useState } from "react";
-import { iActor } from "../../types/movies";
 import styles from "./ActorCard.module.css";
 
 const ActorCard = () => {

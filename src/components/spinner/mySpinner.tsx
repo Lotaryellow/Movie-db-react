@@ -1,5 +1,6 @@
 import { FC } from "react";
 import "./styles.css";
+
 type loadingState = {
   loading: boolean;
 };

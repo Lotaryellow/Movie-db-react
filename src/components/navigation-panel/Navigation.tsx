@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
-import styles from "./Navigation.module.css";
-import { useState, useEffect, SetStateAction } from "react";
 import { SearchService } from "../../services/searchService";
+import { useState, useEffect, SetStateAction } from "react";
 import { ISearchingMovie } from "../../types/movies";
+import styles from "./Navigation.module.css";
 import Spinner from "../spinner/mySpinner";
+import { Link } from "react-router-dom";
+
 const Navigation = (): JSX.Element => {
   const [searchName, setSearchName] = useState<string>("");
   const [searchResult, setSearchResult] = useState<Array<ISearchingMovie>>([]);

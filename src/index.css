@@ -12,6 +12,7 @@
   --fontNormal: 16px;
   --fontLarge: 26px;
   --fontBig: 48px;
+
   padding: 0px 20px 0px 20px;
 }
 
@@ -101,4 +102,21 @@ h6 {
   text-shadow: var(--goldShadow);
   text-align: center;
   padding: 40px 0px 40px 0px;
+}
+.titleStyles {
+  font-size: var(--fontBig);
+  color: var(--white);
+  font-style: italic;
+  text-align: center;
+  text-shadow: var(--goldShadow);
+  padding: 50px 0px 40px 0px;
+}
+.errorStyles {
+  font-size: 20px;
+  color: var(--white);
+}
+@media (max-width: 500px) {
+  .titleStyles {
+    font-size: var(--fontLarge);
+  }
 }
