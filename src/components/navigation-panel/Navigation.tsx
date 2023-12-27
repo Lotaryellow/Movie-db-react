@@ -60,30 +60,30 @@ const Navigation = (): JSX.Element => {
           Подборки и Топы
           {selectIsOpen == true ? (
             <div className={styles.linksBlock}>
-              <Link className={styles.topLink} to={`/top/${"TOP_250_MOVIES"}`}>
+              <Link className={styles.topLink} to={`/top/${"top_250_movies"}`}>
                 Топ 250
               </Link>
               <Link
                 className={styles.topLink}
-                to={`/top/${"TOP_250_TV_SHOWS"}`}
+                to={`/top/${"top_250_tv_shows"}`}
               >
                 Топ 250 Сериалов
               </Link>
-              <Link className={styles.topLink} to={`/top/${"TOP_POPULAR_ALL"}`}>
+              <Link className={styles.topLink} to={`/top/${"top_popular_all"}`}>
                 Популярное сейчас
               </Link>
-              <Link className={styles.topLink} to={`/top/${"ZOMBIE_THEME"}`}>
+              <Link className={styles.topLink} to={`/top/${"zombie_theme"}`}>
                 Топ Зомби Тематика
               </Link>
-              <Link className={styles.topLink} to={`/top/${"VAMPIRE_THEME"}`}>
+              <Link className={styles.topLink} to={`/top/${"vampire_theme"}`}>
                 Топ Вампирская Тематика
               </Link>
-              <Link className={styles.topLink} to={`/top/${"LOVE_THEME"}`}>
+              <Link className={styles.topLink} to={`/top/${"love_theme"}`}>
                 Топ Романтическая Тематика
               </Link>
               <Link
                 className={styles.topLink}
-                to={`/top/${"CATASTROPHE_THEME"}`}
+                to={`/top/${"catastrophe_theme"}`}
               >
                 Топ Катастрофы Тематика
               </Link>

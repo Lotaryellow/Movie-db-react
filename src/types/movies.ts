@@ -116,6 +116,15 @@ export interface ICast {
   professionText: string;
   professionKey: string;
 }
+export interface IFilms {
+  filmId: number;
+  nameRu: string | null;
+  nameEn: string;
+  rating: string;
+  general: boolean;
+  description: string;
+  professionKey: string;
+}
 export interface iActor {
   personId: number;
   webUrl: string;
@@ -144,17 +153,8 @@ export interface iActor {
   hasAwards: number;
   profession: string;
   facts: string[];
-  films: {
-    filmId: number;
-    nameRu: string | null;
-    nameEn: string;
-    rating: string | null;
-    general: boolean;
-    description: string;
-    professionKey: string;
-  }[];
+  films: Array<IFilms>;
 }
-
 export interface ITop {
   kinopoiskId: number;
   imdbId: string;

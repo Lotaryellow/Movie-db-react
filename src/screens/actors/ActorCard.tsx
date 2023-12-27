@@ -2,12 +2,12 @@ import Navigation from "../../components/navigation-panel/Navigation";
 import { ActorService } from "../../services/actorService";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { iActor } from "../../types/movies";
+import { IFilms, iActor } from "../../types/movies";
 import styles from "./ActorCard.module.css";
 
 const ActorCard = () => {
   const [actorData, setActorData] = useState<iActor>(Object);
-
+  const [filmsSorted, setFilmsSorted] = useState<Array<IFilms>>([]);
   const url = useLocation();
   const id: string = url.pathname.replace(/\D/g, "");
 
@@ -15,9 +15,18 @@ const ActorCard = () => {
     const fetchData = async () => {
       const response = await ActorService.getActor(id);
       setActorData(response.data);
+      if (actorData.films.length > 2) {
+        const filmOnRait = actorData.films.sort((a: IFilms, b: IFilms) => {
+          return +a.rating - +b.rating;
+        });
+
+        setFilmsSorted(filmOnRait.reverse());
+      }
     };
+
     fetchData();
   }, [id]);
+
   return (
     <>
       <Navigation />
@@ -104,10 +113,10 @@ const ActorCard = () => {
               : null}
           </div>
         </div>
-        {actorData.films != null ? (
+        {filmsSorted != null ? (
           <div className={styles.filmsBlock}>
             <h2 className={styles.name}>Фильмография:</h2>
-            {actorData.films.map((film, index) => (
+            {filmsSorted.map((film, index) => (
               <Link
                 key={index}
                 to={`/info/${film.filmId}`}
@@ -123,6 +132,10 @@ const ActorCard = () => {
                 <span className={styles.filmInfo}>
                   Роль:
                   <span className={styles.linkText}>{film.description}</span>.
+                </span>
+                <span className={styles.filmInfo}>
+                  Рейтинг:
+                  <span className={styles.linkText}>{film.rating}</span>.
                 </span>
               </Link>
             ))}
