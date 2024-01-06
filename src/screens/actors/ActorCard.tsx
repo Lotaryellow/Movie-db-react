@@ -15,17 +15,28 @@ const ActorCard = () => {
     const fetchData = async () => {
       const response = await ActorService.getActor(id);
       setActorData(response.data);
-      if (actorData.films.length > 2) {
-        const filmOnRait = actorData.films.sort((a: IFilms, b: IFilms) => {
-          return +a.rating - +b.rating;
-        });
-
-        setFilmsSorted(filmOnRait.reverse());
-      }
     };
 
     fetchData();
   }, [id]);
+
+  const [showFlm, setShowFlm] = useState<boolean>(false);
+
+  const filmsOnRole = (role: string) => {
+    const arrProfessionActor = actorData.films.filter((item) => {
+      return item.professionKey === role;
+    });
+    console.log(arrProfessionActor);
+
+    const filmOnRait = arrProfessionActor.sort((a: IFilms, b: IFilms) => {
+      return +a.rating - +b.rating;
+    });
+    console.log(filmOnRait);
+
+    setFilmsSorted(filmOnRait.reverse());
+
+    setShowFlm(true);
+  };
 
   return (
     <>
@@ -84,7 +95,7 @@ const ActorCard = () => {
               Карьера:{" "}
               <span className={styles.infoText}>{actorData.profession} </span>
             </span>
-            {actorData.facts != null ? (
+            {actorData.facts ? (
               <div className={styles.factsBlock}>
                 Факты:
                 {actorData.facts.map((item, index) => (
@@ -113,34 +124,62 @@ const ActorCard = () => {
               : null}
           </div>
         </div>
-        {filmsSorted != null ? (
-          <div className={styles.filmsBlock}>
-            <h2 className={styles.name}>Фильмография:</h2>
-            {filmsSorted.map((film, index) => (
-              <Link
-                key={index}
-                to={`/info/${film.filmId}`}
-                className={styles.link}
-              >
-                <span className={styles.filmInfo}>
-                  Название:
-                  <span className={styles.linkText}>
-                    {film.nameRu || film.nameEn}
-                  </span>
-                  .
-                </span>
-                <span className={styles.filmInfo}>
-                  Роль:
-                  <span className={styles.linkText}>{film.description}</span>.
-                </span>
-                <span className={styles.filmInfo}>
-                  Рейтинг:
-                  <span className={styles.linkText}>{film.rating}</span>.
-                </span>
-              </Link>
-            ))}
+
+        <h2 className={styles.name}>Фильмография:</h2>
+        <div className={styles.filmsBlock}>
+          <div className={styles.professionTabs}>
+            <div
+              className={styles.profession}
+              onClick={() => filmsOnRole("ACTOR")}
+            >
+              Актер
+            </div>
+            <div
+              className={styles.profession}
+              onClick={() => filmsOnRole("HIMSELF")}
+            >
+              Актер: играет самого себя
+            </div>
+            <div
+              className={styles.profession}
+              onClick={() => filmsOnRole("PRODUCER")}
+            >
+              Продюсер
+            </div>
+            <div
+              className={styles.profession}
+              onClick={() => filmsOnRole("DIRECTOR")}
+            >
+              Режиссер
+            </div>
           </div>
-        ) : null}
+
+          {showFlm == true
+            ? filmsSorted.map((film, index) => (
+                <Link
+                  key={index}
+                  to={`/info/${film.filmId}`}
+                  className={styles.link}
+                >
+                  <span className={styles.filmInfo}>
+                    Название:
+                    <span className={styles.linkText}>
+                      {film.nameRu || film.nameEn}
+                    </span>
+                    .
+                  </span>
+                  <span className={styles.filmInfo}>
+                    Роль:
+                    <span className={styles.linkText}>{film.description}</span>.
+                  </span>
+                  <span className={styles.filmInfo}>
+                    Рейтинг:
+                    <span className={styles.linkText}>{film.rating}</span>.
+                  </span>
+                </Link>
+              ))
+            : null}
+        </div>
       </div>
     </>
   );
