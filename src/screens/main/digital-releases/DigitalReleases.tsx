@@ -20,12 +20,14 @@ const DigitalReleases = (): JSX.Element => {
       JSON.parse(digitalReleasesLocalStorage).saveTime ==
         new Date().toJSON().split("T")[0]
     ) {
-      setDigitalReleasesData(JSON.parse(digitalReleasesLocalStorage).data);
+      setDigitalReleasesData(
+        JSON.parse(digitalReleasesLocalStorage).data.releases
+      );
     } else {
       const fetchData = async () => {
         const response = await DigitalReleasesService.getReleases();
-        setDigitalReleasesData(response?.data?.releases);
-        createLocalStorage("releases", response.data?.releases);
+        setDigitalReleasesData(response);
+        createLocalStorage("releases", response);
       };
       fetchData();
     }

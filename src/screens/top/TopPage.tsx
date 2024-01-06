@@ -19,12 +19,12 @@ const TopPage = (): JSX.Element => {
       typeof topLocalStorage === "string" &&
       JSON.parse(topLocalStorage).saveTime == new Date().toJSON().split("T")[0]
     ) {
-      setTopInfo(JSON.parse(topLocalStorage).data);
+      setTopInfo(JSON.parse(topLocalStorage).data.items);
     } else {
       const fetchData = async () => {
         const response = await TopService.getTop(urlName.toUpperCase());
-        setTopInfo(response.data.items);
-        createLocalStorage(`${urlName}`, response.data.items);
+        setTopInfo(response.data);
+        createLocalStorage(`${urlName}`, response.data);
       };
       fetchData();
     }

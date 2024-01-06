@@ -1,14 +1,16 @@
-import { IDigitalRelease, IPremier, IMovie } from "../types/movies";
+import { IDigitalRelease, IPremier, IMovie, ITop } from "../types/movies";
 import { localStorageType, localStorageRandomType } from "../types/movies";
 
 export const createLocalStorage = (
   objectName: string,
-  arr: Array<IPremier> | Array<IDigitalRelease>
+  arr: Array<IPremier> | Array<IDigitalRelease> | Array<ITop>
 ): void => {
   const object: localStorageType = {
     saveTime: new Date().toJSON().split("T")[0],
     data: arr,
   };
+  console.log(arr);
+
   return localStorage.setItem(objectName, JSON.stringify(object));
 };
 

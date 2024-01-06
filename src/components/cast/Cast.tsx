@@ -13,7 +13,7 @@ const Cast = (): JSX.Element => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await CastService.getCast(id);
-      setActorsData(response.data);
+      setActorsData(response);
     };
     fetchData();
   }, [id]);

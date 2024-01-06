@@ -17,7 +17,7 @@ const FilmInfo = (): JSX.Element => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await FilmInfoService.getInfo(urlID);
-      setFilmInfo(response.data);
+      setFilmInfo(response);
     };
     fetchData();
   }, [urlID]);

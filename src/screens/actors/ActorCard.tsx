@@ -2,11 +2,11 @@ import Navigation from "../../components/navigation-panel/Navigation";
 import { ActorService } from "../../services/actorService";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { IFilms, iActor } from "../../types/movies";
+import { IFilms, IActor } from "../../types/movies";
 import styles from "./ActorCard.module.css";
 
 const ActorCard = () => {
-  const [actorData, setActorData] = useState<iActor>(Object);
+  const [actorData, setActorData] = useState<IActor>(Object);
   const [filmsSorted, setFilmsSorted] = useState<Array<IFilms>>([]);
   const url = useLocation();
   const id: string = url.pathname.replace(/\D/g, "");
@@ -14,7 +14,7 @@ const ActorCard = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await ActorService.getActor(id);
-      setActorData(response.data);
+      setActorData(response);
     };
 
     fetchData();
@@ -26,7 +26,6 @@ const ActorCard = () => {
     const arrProfessionActor = actorData.films.filter((item) => {
       return item.professionKey === role;
     });
-    console.log(arrProfessionActor);
 
     const filmOnRait = arrProfessionActor.sort((a: IFilms, b: IFilms) => {
       return +a.rating - +b.rating;

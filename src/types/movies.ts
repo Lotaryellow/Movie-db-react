@@ -7,7 +7,7 @@ export type genre = {
 
 export interface localStorageType {
   saveTime: string;
-  data: Array<IPremier> | Array<IDigitalRelease>;
+  data: Array<IPremier> | Array<IDigitalRelease> | Array<ITop>;
 }
 export interface localStorageRandomType {
   saveTime: string;
@@ -125,7 +125,7 @@ export interface IFilms {
   description: string;
   professionKey: string;
 }
-export interface iActor {
+export interface IActor {
   personId: number;
   webUrl: string;
   nameRu: string | null;

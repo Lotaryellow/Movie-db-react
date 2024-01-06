@@ -17,13 +17,13 @@ const Premeres = (): JSX.Element => {
       JSON.parse(premieresLocalStorage).saveTime ==
         new Date().toJSON().split("T")[0]
     ) {
-      setPremiersData(JSON.parse(premieresLocalStorage).data);
+      setPremiersData(JSON.parse(premieresLocalStorage).data.items);
     } else {
       const fetchData = async () => {
         const response = await PremierService.getPremier();
-        setPremiersData(response.data.items);
+        setPremiersData(response);
 
-        createLocalStorage("premieres", response.data.items);
+        createLocalStorage("premieres", response);
       };
       fetchData();
     }

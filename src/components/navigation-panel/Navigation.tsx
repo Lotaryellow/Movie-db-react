@@ -27,7 +27,7 @@ const Navigation = (): JSX.Element => {
     const fetchData = async () => {
       setLoaderSpinner(true);
       const response = await SearchService.getSearch(searchName);
-      setSearchResult(response.data.films);
+      setSearchResult(response.films);
       setLoaderSpinner(false);
     };
     const timeoutID = window.setTimeout(() => {
