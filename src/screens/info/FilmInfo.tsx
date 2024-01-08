@@ -34,7 +34,7 @@ const FilmInfo = (): JSX.Element => {
         <button className={styles.btnActor} onClick={showActors}>
           Посмотреть список актеров
         </button>
-        {show == true ? <Cast /> : null}
+        {show == true && <Cast />}
       </div>
     </>
   );

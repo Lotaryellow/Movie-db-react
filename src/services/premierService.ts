@@ -13,6 +13,7 @@ export const PremierService = {
     const APIPremiereURL = `${pathApi}/v2.2/films/premieres?year=${dateYearNow}&month=${
       MONTHS[`${dateMonthNow}`]
     }`;
+
     const { data } = await axios.get<Array<IPremier>>(APIPremiereURL, {
       method: "GET",
       headers: {

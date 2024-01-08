@@ -5,6 +5,16 @@ export type genre = {
   [key: string]: string;
 };
 
+export type ISpouse = {
+  personId: number;
+  name: string;
+  divorced: boolean;
+  divorcedReason: string;
+  sex: string;
+  children: number | null;
+  webUrl: string;
+  relation: string;
+};
 export interface localStorageType {
   saveTime: string;
   data: Array<IPremier> | Array<IDigitalRelease> | Array<ITop>;
@@ -138,21 +148,10 @@ export interface IActor {
   age: number;
   birthplace: string | null;
   deathplace: string | null;
-  spouses: [
-    {
-      personId: number;
-      name: string;
-      divorced: boolean;
-      divorcedReason: string;
-      sex: string;
-      children: number | null;
-      webUrl: string;
-      relation: string;
-    } | null
-  ];
+  spouses: Array<ISpouse> | null;
   hasAwards: number;
   profession: string;
-  facts: string[];
+  facts: Array<string>;
   films: Array<IFilms>;
 }
 export interface ITop {

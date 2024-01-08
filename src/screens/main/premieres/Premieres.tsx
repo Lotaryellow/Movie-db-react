@@ -1,3 +1,4 @@
+import Notification from "../../../components/notification/Notification.tsx";
 import SliderCards from "../../../components/slider/SliderCards.tsx";
 import { PremierService } from "../../../services/premierService.ts";
 import { createLocalStorage } from "../../../utils/localStorage.ts";
@@ -22,7 +23,6 @@ const Premeres = (): JSX.Element => {
       const fetchData = async () => {
         const response = await PremierService.getPremier();
         setPremiersData(response);
-
         createLocalStorage("premieres", response);
       };
       fetchData();
@@ -75,7 +75,7 @@ const Premeres = (): JSX.Element => {
               </SwiperSlide>
             ))
           ) : (
-            <span className="errorStyles">Нет данных</span>
+            <Notification />
           )}
         </Swiper>
       </div>

@@ -1,4 +1,5 @@
 import Navigation from "../../components/navigation-panel/Navigation";
+import Notification from "../../components/notification/Notification";
 import { createLocalStorageRandom } from "../../utils/localStorage";
 import RandomCard from "../../components/block-list/BlockListCard";
 import { RandomService } from "../../services/randomService";
@@ -35,7 +36,7 @@ const Random = (): JSX.Element => {
           <RandomCard key={item.kinopoiskId} item={responseServer(item)} />
         ))
       ) : (
-        <span className="randomStyles">Нет данных</span>
+        <Notification />
       )}
     </>
   );

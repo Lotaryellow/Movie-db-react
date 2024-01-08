@@ -58,7 +58,7 @@ const Navigation = (): JSX.Element => {
 
         <div onClick={handleClick} className={styles.selectLinks}>
           Подборки и Топы
-          {selectIsOpen == true ? (
+          {selectIsOpen == true && (
             <div className={styles.linksBlock}>
               <Link className={styles.topLink} to={`/top/${"top_250_movies"}`}>
                 Топ 250
@@ -88,7 +88,7 @@ const Navigation = (): JSX.Element => {
                 Топ Катастрофы Тематика
               </Link>
             </div>
-          ) : null}
+          )}
         </div>
       </div>
       <div className={styles.searchInputBlock}>
@@ -103,7 +103,7 @@ const Navigation = (): JSX.Element => {
           onChange={inputSearch}
           pattern="^[^\s]+(\s.*)?$"
         />
-        {searchOn == true ? (
+        {searchOn == true && (
           <div className={styles.searchResult}>
             {searchResult.map((item: ISearchingMovie) => (
               <button key={item.filmId} className={styles.searchButton}>
@@ -122,7 +122,7 @@ const Navigation = (): JSX.Element => {
               </button>
             ))}
           </div>
-        ) : null}
+        )}
       </div>
     </div>
   );

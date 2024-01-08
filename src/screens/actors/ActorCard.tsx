@@ -1,8 +1,8 @@
 import Navigation from "../../components/navigation-panel/Navigation";
 import { ActorService } from "../../services/actorService";
 import { Link, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { IFilms, IActor } from "../../types/movies";
+import { useEffect, useState } from "react";
 import styles from "./ActorCard.module.css";
 
 const ActorCard = () => {
@@ -30,7 +30,6 @@ const ActorCard = () => {
     const filmOnRait = arrProfessionActor.sort((a: IFilms, b: IFilms) => {
       return +a.rating - +b.rating;
     });
-    console.log(filmOnRait);
 
     setFilmsSorted(filmOnRait.reverse());
 
@@ -64,37 +63,37 @@ const ActorCard = () => {
               .
             </span>
             <span>Рост: {actorData.growth} см.</span>
-            {actorData.birthday != null ? (
+            {actorData.birthday && (
               <span>
                 День рождения:{" "}
                 <span className={styles.infoText}>{actorData.birthday} </span>.
               </span>
-            ) : null}
-            {actorData.death != null ? (
+            )}
+            {actorData.death && (
               <span>
                 Дата смерти:{" "}
                 <span className={styles.infoText}> {actorData.death}</span>.
               </span>
-            ) : null}
-            {actorData.birthplace != null ? (
+            )}
+            {actorData.birthplace && (
               <span>
                 Место рождения:{" "}
                 <span className={styles.infoText}>{actorData.birthplace} </span>
                 .
               </span>
-            ) : null}
-            {actorData.deathplace != null ? (
+            )}
+            {actorData.deathplace && (
               <span>
                 Место смерти:{" "}
                 <span className={styles.infoText}> {actorData.deathplace}</span>
                 .
               </span>
-            ) : null}
+            )}
             <span>
               Карьера:{" "}
               <span className={styles.infoText}>{actorData.profession} </span>
             </span>
-            {actorData.facts ? (
+            {actorData.facts && (
               <div className={styles.factsBlock}>
                 Факты:
                 {actorData.facts.map((item, index) => (
@@ -104,23 +103,22 @@ const ActorCard = () => {
                   </span>
                 ))}
               </div>
-            ) : null}
-            {actorData.spouses != null
-              ? actorData.spouses.map((item) => (
-                  <div key={item?.personId} className={styles.spousesBlock}>
-                    {"Семья:"}
-                    <span className={styles.spousesText}>
-                      {item?.name} - {item?.relation}.
-                    </span>
-                    <span className={styles.spousesText}>
-                      Пол: {item?.sex == "MALE" ? "Мужчина" : "Женщина"}.
-                    </span>
-                    <span className={styles.spousesText}>
-                      Дети: {item?.children}.
-                    </span>
-                  </div>
-                ))
-              : null}
+            )}
+            {actorData.spouses &&
+              actorData.spouses.map((item) => (
+                <div key={item?.personId} className={styles.spousesBlock}>
+                  {"Семья:"}
+                  <span className={styles.spousesText}>
+                    {item?.name} - {item?.relation}.
+                  </span>
+                  <span className={styles.spousesText}>
+                    Пол: {item?.sex == "MALE" ? "Мужчина" : "Женщина"}.
+                  </span>
+                  <span className={styles.spousesText}>
+                    Дети: {item?.children}.
+                  </span>
+                </div>
+              ))}
           </div>
         </div>
 
@@ -153,31 +151,30 @@ const ActorCard = () => {
             </div>
           </div>
 
-          {showFlm == true
-            ? filmsSorted.map((film, index) => (
-                <Link
-                  key={index}
-                  to={`/info/${film.filmId}`}
-                  className={styles.link}
-                >
-                  <span className={styles.filmInfo}>
-                    Название:
-                    <span className={styles.linkText}>
-                      {film.nameRu || film.nameEn}
-                    </span>
-                    .
+          {showFlm == true &&
+            filmsSorted.map((film, index) => (
+              <Link
+                key={index}
+                to={`/info/${film.filmId}`}
+                className={styles.link}
+              >
+                <span className={styles.filmInfo}>
+                  Название:
+                  <span className={styles.linkText}>
+                    {film.nameRu || film.nameEn}
                   </span>
-                  <span className={styles.filmInfo}>
-                    Роль:
-                    <span className={styles.linkText}>{film.description}</span>.
-                  </span>
-                  <span className={styles.filmInfo}>
-                    Рейтинг:
-                    <span className={styles.linkText}>{film.rating}</span>.
-                  </span>
-                </Link>
-              ))
-            : null}
+                  .
+                </span>
+                <span className={styles.filmInfo}>
+                  Роль:
+                  <span className={styles.linkText}>{film.description}</span>.
+                </span>
+                <span className={styles.filmInfo}>
+                  Рейтинг:
+                  <span className={styles.linkText}>{film.rating}</span>.
+                </span>
+              </Link>
+            ))}
         </div>
       </div>
     </>

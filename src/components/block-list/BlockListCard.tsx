@@ -20,7 +20,6 @@ const BlockListCard: FC<data> = ({ item }): JSX.Element => {
               alt={item?.titleRu}
             />
           </div>
-
           <div className={styles.textBlock}>
             <span className={styles.title}>
               Название:
@@ -28,7 +27,7 @@ const BlockListCard: FC<data> = ({ item }): JSX.Element => {
                 {item?.titleOriginal || item?.titleRu || item?.titleEn}
               </span>
             </span>
-            {item?.ratings.kinopoisk ? (
+            {item.ratings.kinopoisk && (
               <span className={styles.title}>
                 Рейтинги Кинопоиска и Imdb:
                 <span className={styles.titleContent}>
@@ -37,55 +36,47 @@ const BlockListCard: FC<data> = ({ item }): JSX.Element => {
                   {item?.ratings.imdb}
                 </span>
               </span>
-            ) : null}
-            {item?.year ? (
-              <span className={styles.title}>
-                Год выпуска:
-                <span className={styles.titleContent}>{item?.year} год</span>
+            )}
+            <span className={styles.title}>
+              Год выпуска:
+              <span className={styles.titleContent}>{item?.year} год</span>
+            </span>
+            <span className={styles.title}>
+              Хронометраж:
+              <span className={styles.titleContent}>
+                {timeConverter(item?.filmLength)}
               </span>
-            ) : null}
-            {item?.filmLength ? (
-              <span className={styles.title}>
-                Хронометраж:
-                <span className={styles.titleContent}>
-                  {timeConverter(item?.filmLength)}
-                </span>
-              </span>
-            ) : null}
-            {item?.slogan ? (
+            </span>
+            {item.slogan && (
               <span className={styles.title}>
                 Слоган:
                 <span className={styles.titleContent}>{item?.slogan}</span>
               </span>
-            ) : null}
-            {item?.description ? (
+            )}
+            {item.description && (
               <span className={styles.title}>
                 Описание:
                 <span className={styles.titleContent}>{item?.description}</span>
               </span>
-            ) : null}
-            {item.genres ? (
-              <span className={styles.title}>
-                Жанр:
-                {item?.genres.map((item, index) => (
-                  <span key={index} className={styles.titleContent}>
-                    {item?.genre}
-                    {index < item?.genres?.length - 1 ? "," : ""}
-                  </span>
-                ))}
-              </span>
-            ) : null}
-            {item.countries ? (
-              <span className={styles.title}>
-                Страны:
-                {item?.countries.map((item, index) => (
-                  <span key={index} className={styles.titleContent}>
-                    {item?.country}
-                    {index < item?.countries?.length - 1 ? "," : ""}
-                  </span>
-                ))}
-              </span>
-            ) : null}
+            )}
+            <span className={styles.title}>
+              Жанр:
+              {item?.genres?.map((item, index) => (
+                <span key={index} className={styles.titleContent}>
+                  {item?.genre}
+                  {index < item?.genres?.length - 1 ? "," : ""}
+                </span>
+              ))}
+            </span>
+            <span className={styles.title}>
+              Страны:
+              {item?.countries?.map((item, index) => (
+                <span key={index} className={styles.titleContent}>
+                  {item?.country}
+                  {index < item?.countries?.length - 1 ? "," : ""}
+                </span>
+              ))}
+            </span>
           </div>
         </div>
       </Link>

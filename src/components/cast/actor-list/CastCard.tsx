@@ -9,7 +9,7 @@ type dataActor = {
 const CastCard: FC<dataActor> = ({ actor }) => {
   return (
     <div className={styles.block}>
-      {actor.professionKey == "ACTOR" ? (
+      {actor.professionKey == "ACTOR" && (
         <>
           <div className={styles.imgBlock}>
             <img
@@ -23,7 +23,7 @@ const CastCard: FC<dataActor> = ({ actor }) => {
           </span>
           <span className={styles.text}>Роль: {actor.description}</span>
         </>
-      ) : null}
+      )}
     </div>
   );
 };

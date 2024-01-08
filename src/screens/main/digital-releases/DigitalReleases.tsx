@@ -1,12 +1,13 @@
+import Notification from "../../../components/notification/Notification.tsx";
 import SliderCards from "../../../components/slider/SliderCards.tsx";
 import { createLocalStorage } from "../../../utils/localStorage.ts";
+import responseServer from "../../../utils/responseServer.ts";
 import { IDigitalRelease } from "../../../types/movies.ts";
 import { DigitalReleasesService } from "../../../services/digitalReleasesService.ts";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useState, useEffect } from "react";
 
 import "swiper/css";
-import responseServer from "../../../utils/responseServer.ts";
 
 const DigitalReleases = (): JSX.Element => {
   const [digitalReleasesData, setDigitalReleasesData] = useState<
@@ -79,7 +80,7 @@ const DigitalReleases = (): JSX.Element => {
               </SwiperSlide>
             ))
           ) : (
-            <span className="errorStyles">Нет данных</span>
+            <Notification />
           )}
         </Swiper>
       </div>
