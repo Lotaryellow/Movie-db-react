@@ -5,3 +5,10 @@
   background-color: var(--gold);
   width: 300px;
 }
+.spinner {
+  margin: 200px auto;
+}
+.spinner:first-child {
+  width: 300px;
+  height: 300px;
+}

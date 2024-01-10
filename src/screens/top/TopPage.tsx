@@ -6,10 +6,13 @@ import { TopService } from "../../services/topService";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ITop } from "../../types/movies";
+import Notification from "../../components/notification/Notification";
+import FullSpinner from "../../components/full-spinner/MyFullSpinner";
 
 const TopPage = (): JSX.Element => {
   const [topInfo, setTopInfo] = useState<Array<ITop>>([]);
-
+  const [error, setError] = useState<string>("");
+  const [loaderSpinner, setLoaderSpinner] = useState<boolean>(false);
   const url = useLocation();
   const urlName: string = url.pathname.replace("/top/", "");
 
@@ -22,9 +25,15 @@ const TopPage = (): JSX.Element => {
       setTopInfo(JSON.parse(topLocalStorage).data.items);
     } else {
       const fetchData = async () => {
+        setLoaderSpinner(true);
         const response = await TopService.getTop(urlName.toUpperCase());
-        setTopInfo(response.data);
-        createLocalStorage(`${urlName}`, response.data);
+        if (typeof response === "string") {
+          setError(response);
+        } else if (response != undefined) {
+          setTopInfo(response.data);
+          createLocalStorage(`${urlName}`, response.data);
+          setLoaderSpinner(false);
+        }
       };
       fetchData();
     }
@@ -36,6 +45,12 @@ const TopPage = (): JSX.Element => {
       {topInfo.map((film: ITop) => (
         <BlockListCard key={film.kinopoiskId} item={responseServer(film)} />
       ))}
+      {loaderSpinner == true && (
+        <div>
+          <FullSpinner loading={loaderSpinner} />
+          <Notification text={error} />
+        </div>
+      )}
     </>
   );
 };

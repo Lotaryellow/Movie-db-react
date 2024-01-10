@@ -1,5 +1,7 @@
 import Navigation from "../../components/navigation-panel/Navigation";
 import BlockListCard from "../../components/block-list/BlockListCard";
+import FullSpinner from "../../components/full-spinner/MyFullSpinner";
+import Notification from "../../components/notification/Notification";
 import { FilmInfoService } from "../../services/filmInfoService";
 import responseServer from "../../utils/responseServer";
 import { useLocation } from "react-router-dom";
@@ -9,15 +11,22 @@ import { IMovie } from "../../types/movies";
 import styles from "./FilmInfo.module.css";
 
 const FilmInfo = (): JSX.Element => {
-  const [filmInfo, setFilmInfo] = useState<IMovie>(Object);
-
+  const [filmInfo, setFilmInfo] = useState<IMovie | null>(null);
+  const [loaderSpinner, setLoaderSpinner] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
   const url = useLocation();
   const urlID: string = url.pathname.replace(/\D/g, "");
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoaderSpinner(true);
       const response = await FilmInfoService.getInfo(urlID);
-      setFilmInfo(response);
+      if (typeof response === "string") {
+        setError(response);
+      } else if (response != undefined) {
+        setFilmInfo(response);
+        setLoaderSpinner(false);
+      }
     };
     fetchData();
   }, [urlID]);
@@ -29,13 +38,23 @@ const FilmInfo = (): JSX.Element => {
   return (
     <>
       <Navigation />
-      <BlockListCard item={responseServer(filmInfo)} />
-      <div className={styles.actorBlock}>
-        <button className={styles.btnActor} onClick={showActors}>
-          Посмотреть список актеров
-        </button>
-        {show == true && <Cast />}
-      </div>
+      {filmInfo != null && (
+        <>
+          <BlockListCard item={responseServer(filmInfo)} />
+          <div className={styles.actorBlock}>
+            <button className={styles.btnActor} onClick={showActors}>
+              Посмотреть список актеров
+            </button>
+            {show == true && <Cast />}
+          </div>
+        </>
+      )}
+      {filmInfo === null && (
+        <div className={styles.spinner}>
+          <FullSpinner loading={loaderSpinner} />
+          <Notification text={error} />
+        </div>
+      )}
     </>
   );
 };

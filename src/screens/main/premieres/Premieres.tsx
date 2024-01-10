@@ -10,7 +10,7 @@ import "swiper/css";
 
 const Premeres = (): JSX.Element => {
   const [premiersData, setPremiersData] = useState<Array<IPremier>>([]);
-
+  const [error, setError] = useState<string>("");
   const premieresLocalStorage = localStorage.getItem("premieres");
   useEffect(() => {
     if (
@@ -22,8 +22,12 @@ const Premeres = (): JSX.Element => {
     } else {
       const fetchData = async () => {
         const response = await PremierService.getPremier();
-        setPremiersData(response);
-        createLocalStorage("premieres", response);
+        if (typeof response === "string") {
+          setError(response);
+        } else if (response != undefined) {
+          setPremiersData(response);
+          createLocalStorage("premieres", response);
+        }
       };
       fetchData();
     }
@@ -60,25 +64,26 @@ const Premeres = (): JSX.Element => {
 
   return (
     <div>
-      <h2 className="titleStyles">Премьеры этого месяца</h2>
-      <div>
-        <Swiper
-          spaceBetween={30}
-          slidesPerView={cardsNumberWidth}
-          loop={true}
-          grab-cursor="true"
-        >
-          {premiersData.length > 0 ? (
-            premiersData.map((item: IPremier) => (
+      {premiersData.length > 0 ? (
+        <div>
+          {" "}
+          <h2 className="titleStyles">Премьеры этого месяца</h2>
+          <Swiper
+            spaceBetween={30}
+            slidesPerView={cardsNumberWidth}
+            loop={true}
+            grab-cursor="true"
+          >
+            {premiersData.map((item: IPremier) => (
               <SwiperSlide key={item.kinopoiskId}>
                 <SliderCards item={responseServer(item)} />
               </SwiperSlide>
-            ))
-          ) : (
-            <Notification />
-          )}
-        </Swiper>
-      </div>
+            ))}
+          </Swiper>
+        </div>
+      ) : (
+        <Notification text={error} />
+      )}
     </div>
   );
 };

@@ -5,6 +5,11 @@ export type genre = {
   [key: string]: string;
 };
 
+export interface IError {
+  message: string;
+  statusCode: number;
+}
+
 export type ISpouse = {
   personId: number;
   name: string;
@@ -17,7 +22,7 @@ export type ISpouse = {
 };
 export interface localStorageType {
   saveTime: string;
-  data: Array<IPremier> | Array<IDigitalRelease> | Array<ITop>;
+  data: Array<IPremier> | Array<IDigitalRelease> | Array<ITop> | unknown;
 }
 export interface localStorageRandomType {
   saveTime: string;

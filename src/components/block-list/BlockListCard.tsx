@@ -24,7 +24,7 @@ const BlockListCard: FC<data> = ({ item }): JSX.Element => {
             <span className={styles.title}>
               Название:
               <span className={styles.titleContent}>
-                {item?.titleOriginal || item?.titleRu || item?.titleEn}
+                {item?.titleRu || item?.titleOriginal || item?.titleEn}
               </span>
             </span>
             {item.ratings.kinopoisk && (

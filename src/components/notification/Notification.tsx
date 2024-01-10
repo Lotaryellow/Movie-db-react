@@ -1,5 +1,16 @@
 import styles from "./Notification.module.css";
-const Notification = () => {
-  return <div className={styles.content}></div>;
+import { FC } from "react";
+
+type errorText = {
+  text: string;
+};
+
+const Notification: FC<errorText> = ({ text }) => {
+  return (
+    <div className={styles.content}>
+      {" "}
+      <span>Ошибочка вышла {text}</span>
+    </div>
+  );
 };
 export default Notification;

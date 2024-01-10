@@ -1,5 +1,6 @@
 import { SearchService } from "../../services/searchService";
 import { useState, useEffect, SetStateAction } from "react";
+import Notification from "../notification/Notification";
 import { ISearchingMovie } from "../../types/movies";
 import styles from "./Navigation.module.css";
 import Spinner from "../spinner/mySpinner";
@@ -11,6 +12,7 @@ const Navigation = (): JSX.Element => {
   const [loaderSpinner, setLoaderSpinner] = useState<boolean>(false);
   const [searchOn, setSearchOn] = useState<boolean>(false);
   const [selectIsOpen, setSelectIsOpen] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   const inputSearch = (event: {
     target: { value: SetStateAction<string> };
@@ -27,8 +29,12 @@ const Navigation = (): JSX.Element => {
     const fetchData = async () => {
       setLoaderSpinner(true);
       const response = await SearchService.getSearch(searchName);
-      setSearchResult(response.films);
-      setLoaderSpinner(false);
+      if (typeof response === "string") {
+        setError(response);
+      } else if (response != undefined) {
+        setSearchResult(response.films);
+        setLoaderSpinner(false);
+      }
     };
     const timeoutID = window.setTimeout(() => {
       if (searchName.length > 0) {
@@ -43,88 +49,100 @@ const Navigation = (): JSX.Element => {
   };
 
   return (
-    <div className={styles.content}>
-      <div className={styles.logo}>
-        <Link to="/">
-          <img className={styles.navLogo} src="./logo.svg" alt="logo" />
-        </Link>
-        <Link to="/" className={styles.navTitle}>
-          Movie-DB
-        </Link>
+    <>
+      <div className={styles.content}>
+        <div className={styles.logo}>
+          <Link to="/">
+            <img className={styles.navLogo} src="./logo.svg" alt="logo" />
+          </Link>
+          <Link to="/" className={styles.navTitle}>
+            Movie-DB
+          </Link>
 
-        <Link to="/random" className={styles.rndFilms}>
-          Случайные фильмы
-        </Link>
+          <Link to="/random" className={styles.rndFilms}>
+            Случайные фильмы
+          </Link>
 
-        <div onClick={handleClick} className={styles.selectLinks}>
-          Подборки и Топы
-          {selectIsOpen == true && (
-            <div className={styles.linksBlock}>
-              <Link className={styles.topLink} to={`/top/${"top_250_movies"}`}>
-                Топ 250
-              </Link>
-              <Link
-                className={styles.topLink}
-                to={`/top/${"top_250_tv_shows"}`}
-              >
-                Топ 250 Сериалов
-              </Link>
-              <Link className={styles.topLink} to={`/top/${"top_popular_all"}`}>
-                Популярное сейчас
-              </Link>
-              <Link className={styles.topLink} to={`/top/${"zombie_theme"}`}>
-                Топ Зомби Тематика
-              </Link>
-              <Link className={styles.topLink} to={`/top/${"vampire_theme"}`}>
-                Топ Вампирская Тематика
-              </Link>
-              <Link className={styles.topLink} to={`/top/${"love_theme"}`}>
-                Топ Романтическая Тематика
-              </Link>
-              <Link
-                className={styles.topLink}
-                to={`/top/${"catastrophe_theme"}`}
-              >
-                Топ Катастрофы Тематика
-              </Link>
+          <div onClick={handleClick} className={styles.selectLinks}>
+            Подборки и Топы
+            {selectIsOpen == true && (
+              <div className={styles.linksBlock}>
+                <Link
+                  className={styles.topLink}
+                  to={`/top/${"top_250_movies"}`}
+                >
+                  Топ 250
+                </Link>
+                <Link
+                  className={styles.topLink}
+                  to={`/top/${"top_250_tv_shows"}`}
+                >
+                  Топ 250 Сериалов
+                </Link>
+                <Link
+                  className={styles.topLink}
+                  to={`/top/${"top_popular_all"}`}
+                >
+                  Популярное сейчас
+                </Link>
+                <Link className={styles.topLink} to={`/top/${"zombie_theme"}`}>
+                  Топ Зомби Тематика
+                </Link>
+                <Link className={styles.topLink} to={`/top/${"vampire_theme"}`}>
+                  Топ Вампирская Тематика
+                </Link>
+                <Link className={styles.topLink} to={`/top/${"love_theme"}`}>
+                  Топ Романтическая Тематика
+                </Link>
+                <Link
+                  className={styles.topLink}
+                  to={`/top/${"catastrophe_theme"}`}
+                >
+                  Топ Катастрофы Тематика
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className={styles.searchInputBlock}>
+          <div className={styles.spinner}>
+            <Spinner loading={loaderSpinner} />
+          </div>
+
+          <input
+            className={styles.input}
+            type="text"
+            placeholder="Поиск"
+            onChange={inputSearch}
+            pattern="^[^\s]+(\s.*)?$"
+          />
+          {searchOn == true && (
+            <div className={styles.searchResult}>
+              {searchResult.map((item: ISearchingMovie) => (
+                <button key={item.filmId} className={styles.searchButton}>
+                  <Link
+                    to={`/info/${item.filmId}`}
+                    className={styles.searchCard}
+                  >
+                    <div className={styles.searchImgContainer}>
+                      <img
+                        className={styles.searchImg}
+                        src={item.posterUrlPreview}
+                        alt={item.nameRu}
+                      />
+                    </div>
+                    <span className={styles.searchItemName}>
+                      {item.nameEn || item.nameRu}
+                    </span>
+                  </Link>
+                </button>
+              ))}
             </div>
           )}
         </div>
       </div>
-      <div className={styles.searchInputBlock}>
-        <div className={styles.spinner}>
-          <Spinner loading={loaderSpinner} />
-        </div>
-
-        <input
-          className={styles.input}
-          type="text"
-          placeholder="Поиск"
-          onChange={inputSearch}
-          pattern="^[^\s]+(\s.*)?$"
-        />
-        {searchOn == true && (
-          <div className={styles.searchResult}>
-            {searchResult.map((item: ISearchingMovie) => (
-              <button key={item.filmId} className={styles.searchButton}>
-                <Link to={`/info/${item.filmId}`} className={styles.searchCard}>
-                  <div className={styles.searchImgContainer}>
-                    <img
-                      className={styles.searchImg}
-                      src={item.posterUrlPreview}
-                      alt={item.nameRu}
-                    />
-                  </div>
-                  <span className={styles.searchItemName}>
-                    {item.nameEn || item.nameRu}
-                  </span>
-                </Link>
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
+      {loaderSpinner == true && <Notification text={error} />}
+    </>
   );
 };
 export default Navigation;

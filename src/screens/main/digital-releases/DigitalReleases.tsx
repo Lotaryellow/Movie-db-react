@@ -6,14 +6,13 @@ import { IDigitalRelease } from "../../../types/movies.ts";
 import { DigitalReleasesService } from "../../../services/digitalReleasesService.ts";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useState, useEffect } from "react";
-
 import "swiper/css";
 
 const DigitalReleases = (): JSX.Element => {
   const [digitalReleasesData, setDigitalReleasesData] = useState<
     Array<IDigitalRelease>
   >([]);
-
+  const [error, setError] = useState<string>("");
   const digitalReleasesLocalStorage = localStorage.getItem("releases");
   useEffect(() => {
     if (
@@ -27,8 +26,12 @@ const DigitalReleases = (): JSX.Element => {
     } else {
       const fetchData = async () => {
         const response = await DigitalReleasesService.getReleases();
-        setDigitalReleasesData(response);
-        createLocalStorage("releases", response);
+        if (typeof response === "string") {
+          setError(response);
+        } else if (response != undefined) {
+          setDigitalReleasesData(response);
+          createLocalStorage("releases", response);
+        }
       };
       fetchData();
     }
@@ -65,25 +68,25 @@ const DigitalReleases = (): JSX.Element => {
 
   return (
     <div>
-      <h2 className="titleStyles">Цифровые релизы этого месяца</h2>
-      <div>
-        <Swiper
-          spaceBetween={30}
-          slidesPerView={cardsNumberWidth}
-          loop={true}
-          grab-cursor="true"
-        >
-          {digitalReleasesData.length > 0 ? (
-            digitalReleasesData.map((item: IDigitalRelease) => (
+      {digitalReleasesData.length > 0 ? (
+        <div>
+          <h2 className="titleStyles">Цифровые релизы этого месяца</h2>
+          <Swiper
+            spaceBetween={30}
+            slidesPerView={cardsNumberWidth}
+            loop={true}
+            grab-cursor="true"
+          >
+            {digitalReleasesData.map((item: IDigitalRelease) => (
               <SwiperSlide key={item.filmId}>
                 <SliderCards item={responseServer(item)} />
               </SwiperSlide>
-            ))
-          ) : (
-            <Notification />
-          )}
-        </Swiper>
-      </div>
+            ))}
+          </Swiper>
+        </div>
+      ) : (
+        <Notification text={error} />
+      )}
     </div>
   );
 };

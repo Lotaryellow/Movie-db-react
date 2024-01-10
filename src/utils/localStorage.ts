@@ -3,7 +3,7 @@ import { localStorageType, localStorageRandomType } from "../types/movies";
 
 export const createLocalStorage = (
   objectName: string,
-  arr: Array<IPremier> | Array<IDigitalRelease> | Array<ITop>
+  arr: Array<IPremier> | Array<IDigitalRelease> | Array<ITop> | unknown
 ): void => {
   const object: localStorageType = {
     saveTime: new Date().toJSON().split("T")[0],

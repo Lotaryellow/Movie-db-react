@@ -1,6 +1,6 @@
-import axios from "axios";
 import { getRandomInRange } from "../utils/randomInRange";
-import { IMovie } from "../types/movies";
+import { IError, IMovie } from "../types/movies";
+import axios, { AxiosError } from "axios";
 
 const keyApi: string = import.meta.env.VITE_APP_APIKEY;
 const pathApi: string = import.meta.env.VITE_APP_APIPATH;
@@ -10,14 +10,20 @@ export const RandomService = {
     const responsePromises = [];
     for (let i = 0; i < 4; i++) {
       const API_URL = `${pathApi}/v2.2/films/${getRandomInRange(100, 10000)}`;
-      const res = await axios.get(API_URL, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "X-API-KEY": keyApi,
-        },
-      });
-      responsePromises.push(res);
+      try {
+        const res = await axios.get(API_URL, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "X-API-KEY": keyApi,
+          },
+        });
+        responsePromises.push(res);
+      } catch (err) {
+        const error = err as AxiosError<IError>;
+        if (typeof error.response?.data.message === "string")
+          return error.response?.data.message;
+      }
     }
 
     const promisesArray = (await Promise.allSettled(responsePromises)).map(
