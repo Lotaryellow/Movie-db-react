@@ -34,6 +34,9 @@ const TopPage = (): JSX.Element => {
           createLocalStorage(`${urlName}`, response.data);
           setLoaderSpinner(false);
         }
+        setTimeout(() => {
+          setError("");
+        }, 7000);
       };
       fetchData();
     }

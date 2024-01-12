@@ -31,6 +31,9 @@ const Random = (): JSX.Element => {
           createLocalStorageRandom("random", response);
           setLoaderSpinner(false);
         }
+        setTimeout(() => {
+          setError("");
+        }, 7000);
       };
       fetchData();
     }

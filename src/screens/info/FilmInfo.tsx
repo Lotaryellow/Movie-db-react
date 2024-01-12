@@ -27,6 +27,9 @@ const FilmInfo = (): JSX.Element => {
         setFilmInfo(response);
         setLoaderSpinner(false);
       }
+      setTimeout(() => {
+        setError("");
+      }, 7000);
     };
     fetchData();
   }, [urlID]);

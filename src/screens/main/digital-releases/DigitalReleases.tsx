@@ -32,6 +32,9 @@ const DigitalReleases = (): JSX.Element => {
           setDigitalReleasesData(response);
           createLocalStorage("releases", response);
         }
+        setTimeout(() => {
+          setError("");
+        }, 7000);
       };
       fetchData();
     }

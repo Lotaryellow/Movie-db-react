@@ -28,6 +28,9 @@ const Premeres = (): JSX.Element => {
           setPremiersData(response);
           createLocalStorage("premieres", response);
         }
+        setTimeout(() => {
+          setError("");
+        }, 7000);
       };
       fetchData();
     }

@@ -25,6 +25,9 @@ const ActorCard = () => {
         setActorData(response);
         setLoaderSpinner(false);
       }
+      setTimeout(() => {
+        setError("");
+      }, 7000);
     };
 
     fetchData();
