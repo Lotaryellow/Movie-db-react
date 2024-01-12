@@ -40,7 +40,7 @@ export const RandomService = {
         }
       }
     );
-    const data: IMovie[] = [];
+    const data: Array<IMovie> = [];
     randomResponse.map((item) => data.push(item?.data));
     return data;
   },

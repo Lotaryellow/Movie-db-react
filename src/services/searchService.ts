@@ -9,7 +9,7 @@ interface SearchingMovieResponse {
 
 export const SearchService = {
   async getSearch(searchItemName: string) {
-    const APISearchURL = `${pathApi}/v2.1/films/search-by-keyword?keyword=${searchItemName}`;
+    const APISearchURL = `${pathApi}/v2.1films/search-by-keyword?keyword=${searchItemName}`;
     try {
       const { data } = await axios.get<SearchingMovieResponse>(APISearchURL, {
         method: "GET",

@@ -1,13 +1,13 @@
 import Navigation from "../../components/navigation-panel/Navigation";
 import BlockListCard from "../../components/block-list/BlockListCard";
+import Notification from "../../components/notification/Notification";
+import FullSpinner from "../../components/full-spinner/MyFullSpinner";
 import { createLocalStorage } from "../../utils/localStorage";
 import responseServer from "../../utils/responseServer";
 import { TopService } from "../../services/topService";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ITop } from "../../types/movies";
-import Notification from "../../components/notification/Notification";
-import FullSpinner from "../../components/full-spinner/MyFullSpinner";
 
 const TopPage = (): JSX.Element => {
   const [topInfo, setTopInfo] = useState<Array<ITop>>([]);

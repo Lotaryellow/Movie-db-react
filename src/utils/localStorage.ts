@@ -1,5 +1,11 @@
-import { IDigitalRelease, IPremier, IMovie, ITop } from "../types/movies";
-import { localStorageType, localStorageRandomType } from "../types/movies";
+import {
+  IDigitalRelease,
+  IPremier,
+  IMovie,
+  ITop,
+  localStorageType,
+  localStorageRandomType,
+} from "../types/movies";
 
 export const createLocalStorage = (
   objectName: string,

@@ -1,4 +1,4 @@
-export function endingConvert(number: number, titles: string[]): string {
+export function endingConvert(number: number, titles: Array<string>): string {
   const cases = [2, 0, 1, 1, 1, 2];
 
   number = Math.abs(number);

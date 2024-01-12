@@ -35,6 +35,9 @@ const Navigation = (): JSX.Element => {
         setSearchResult(response.films);
         setLoaderSpinner(false);
       }
+      setTimeout(() => {
+        setError("");
+      }, 7000);
     };
     const timeoutID = window.setTimeout(() => {
       if (searchName.length > 0) {
@@ -141,7 +144,7 @@ const Navigation = (): JSX.Element => {
           )}
         </div>
       </div>
-      {loaderSpinner == true && <Notification text={error} />}
+      {error.length > 0 && <Notification text={error} />}
     </>
   );
 };
