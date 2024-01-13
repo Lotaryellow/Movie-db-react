@@ -15,7 +15,6 @@ export const createLocalStorage = (
     saveTime: new Date().toJSON().split("T")[0],
     data: arr,
   };
-
   return localStorage.setItem(objectName, JSON.stringify(object));
 };
 

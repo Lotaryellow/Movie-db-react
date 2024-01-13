@@ -14,8 +14,7 @@ const TopPage = (): JSX.Element => {
   const [error, setError] = useState<string>("");
   const [loaderSpinner, setLoaderSpinner] = useState<boolean>(false);
   const url = useLocation();
-  const urlName: string = url.pathname.replace("/top/", "");
-
+  const urlName: string = url.pathname.replace("/top/", "").toUpperCase();
   const topLocalStorage = localStorage.getItem(`${urlName}`);
   useEffect(() => {
     if (
@@ -26,12 +25,12 @@ const TopPage = (): JSX.Element => {
     } else {
       const fetchData = async () => {
         setLoaderSpinner(true);
-        const response = await TopService.getTop(urlName.toUpperCase());
+        const response = await TopService.getTop(urlName);
         if (typeof response === "string") {
           setError(response);
         } else if (response != undefined) {
-          setTopInfo(response.data);
-          createLocalStorage(`${urlName}`, response.data);
+          setTopInfo(response);
+          createLocalStorage(`${urlName}`, response);
           setLoaderSpinner(false);
         }
         setTimeout(() => {
@@ -48,7 +47,7 @@ const TopPage = (): JSX.Element => {
       {topInfo.map((film: ITop) => (
         <BlockListCard key={film.kinopoiskId} item={responseServer(film)} />
       ))}
-      {loaderSpinner == true && (
+      {error.length > 0 && (
         <div>
           <FullSpinner loading={loaderSpinner} />
           <Notification text={error} />

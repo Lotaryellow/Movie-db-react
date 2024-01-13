@@ -27,8 +27,8 @@ export const RandomService = {
     }
 
     const promisesArray = (await Promise.allSettled(responsePromises)).map(
-      (promis) => {
-        if (promis.status === "fulfilled") return promis.value;
+      (promise) => {
+        if (promise.status === "fulfilled") return promise.value;
       }
     );
     const randomResponse = (await Promise.allSettled(promisesArray)).map(

@@ -32,7 +32,7 @@ const Navigation = (): JSX.Element => {
       if (typeof response === "string") {
         setError(response);
       } else if (response != undefined) {
-        setSearchResult(response.films);
+        setSearchResult(response);
         setLoaderSpinner(false);
       }
       setTimeout(() => {

@@ -8,7 +8,7 @@ export const TopService = {
   async getTop(topName: string) {
     const APITopURL = `${pathApi}/v2.2/films/collections?type=${topName}&page=1`;
     try {
-      const data = await axios.get<Array<ITop>>(APITopURL, {
+      const { data } = await axios.get<Array<ITop>>(APITopURL, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
